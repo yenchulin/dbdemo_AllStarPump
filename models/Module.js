@@ -8,11 +8,11 @@ var Module = function(options) {
   this.currentLocation = options.currentLocation;
 };
 
-Module.getById = function(modulelId){
+Module.getById = function(moduleId){
   db.select()
       .from('module')
       .where({
-          modulelId: moduleId
+          moduleId: moduleId
       }).map(function(row) {
           return new Module(row);
       }).then(function(moduleList) {
@@ -27,7 +27,7 @@ Module.getById = function(modulelId){
       });
 };
 
-Member.prototype.save = function(cb) {
+Module.prototype.save = function(cb) {
   if(this.moduleId) {
     db('module')
       .update({
@@ -48,7 +48,7 @@ Member.prototype.save = function(cb) {
   } else {
     db('module')
         .insert({
-          modulelId: this.moduleId,
+          moduleId: this.moduleId,
           moduleUsage: this.moduleUsage,
           moduleQuantity: this.moduleQuantity,
           currentLocation: this.currentLocation
