@@ -1,12 +1,12 @@
 var express = require('express');
 var router = express.Router();
-// var Member = require('../models/Member');
-// var async = require('async');
+var Member = require('../models/Member');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-  //res.render('index', { member: null });
+  res.render('index', {
+      member: req.session.member
+    });
 });
 
 module.exports = router;
