@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2016-06-06 19:02:05
+-- 產生時間： 2016-06-06 19:25:37
 -- 伺服器版本: 10.1.10-MariaDB
 -- PHP 版本： 5.6.19
 
@@ -71,6 +71,17 @@ CREATE TABLE `bcompany` (
 -- --------------------------------------------------------
 
 --
+-- 資料表結構 `member`
+--
+
+CREATE TABLE `member` (
+  `account` varchar(15) NOT NULL,
+  `password` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- 資料表結構 `module`
 --
 
@@ -106,6 +117,13 @@ ALTER TABLE `assemble`
 ALTER TABLE `bcompany`
   ADD PRIMARY KEY (`廠商名稱`),
   ADD UNIQUE KEY `馬達型號` (`馬達型號`);
+
+--
+-- 資料表索引 `member`
+--
+ALTER TABLE `member`
+  ADD PRIMARY KEY (`account`),
+  ADD UNIQUE KEY `password` (`password`);
 
 --
 -- 資料表索引 `module`
