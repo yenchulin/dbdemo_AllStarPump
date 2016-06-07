@@ -27,7 +27,6 @@ Member.getByAccount = function(memberAct, cb) {
 };
 
 Member.prototype.save = function(cb) {
-    console.log("not exists");
     db("member")
         .insert({
             account: this.account,
