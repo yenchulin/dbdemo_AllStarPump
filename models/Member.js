@@ -27,40 +27,21 @@ Member.getByAccount = function(memberAct, cb) {
 };
 
 Member.prototype.save = function(cb) {
-    //save的概念是當物件不存在時新增，存在時對DB做更新
-    if (this.account) {
-        //已存在
-        db("member")
-            .where({
-                account: this.account
-            })
-            .update({
-                password: this.password
-            })
-            .then(function() {
-                cb(null, this);
-            }.bind(this))
-            .catch(function(err) {
-                console.log("MEMBER UPDATED", err);
-                cb(new GeneralErrors.Database());
-            });
-    } else {
-        //不存在
-        db("member")
-            .insert({
-                account: this.account,
-                password: this.password
-            })
-            .then(function(result) {
-                var insertedId = result[0];
-                this.account = insertedAct;
-                cb(null, this);
-            }.bind(this))
-            .catch(function(err) {
-                console.log("MEMBER INSERT", err);
-                cb(new GeneralErrors.Database());
-            });
-    }
+    console.log("not exists");
+    db("member")
+        .insert({
+            account: this.account,
+            password: this.password
+        })
+        .then(function(result) {
+            var insertedAct = result[0];
+            this.account = insertedAct;
+            cb(null, this);
+        }.bind(this))
+        .catch(function(err) {
+            console.log("MEMBER INSERT", err);
+            cb(new GeneralErrors.Database());
+        });
 };
 
 module.exports = Member;
