@@ -1,17 +1,4 @@
 <% include ./header %>
-<body>
-<div class=container>
-  <div class=masthead>
-    <h3 class=text-muted>All Star Pump</h3>
-    <div role=navigation><ul class="nav nav-justified">
-      <li class=active><a href=#>新增</a>
-          <li><a href=#>查詢</a>
-            </ul>
-              </ul>
-            </div>
-          </div>
-<div class=jumbotron>
-  </div>
   <div class=row>
     <div class=col-lg-4><h2>模具</h2>
       <table border=1 bordercolor=#003366 width=900>
@@ -24,36 +11,12 @@
     <th>修改</th>
     <th>刪除</th>
 </tr>
-
-<tr>
-    <td>wTL2-0</td>
-    <td>前段導輪</td>
-    <td>7</td>
-    <td>義豐有限公司</td>
-
-    <th><a class="btn btn-primary" href=# role=button>修改</a></th>
-    <th><a class="btn btn-danger" href=# role=button>刪除</a></th>
-</tr>
-
-<tr>
-    <td>WXA50130</td>
-    <td>汞殼膜</td>
-    <td>4</td>
-    <td>容展精密企業有限公司</td>
-
-    <th><a class="btn btn-primary" href=# role=button>修改</a></th>
-    <th><a class="btn btn-danger" href=# role=button>刪除</a></th>
-</tr>
-
-<tr>
-    <td>WCXW-L320-1</td>
-    <td>FC SC共用</td>
-    <td>9</td>
-    <td>容展精密企業有限公司</td>
-
-    <th><a class="btn btn-primary" href=# role=button>修改</a></th>
-    <th><a class="btn btn-danger" href=# role=button>刪除</a></th>
-</tr>
+<% list.foreach(function(row) %>
+<tr><% row.moduleId %></tr>
+<tr><% row.moduleUsage%></tr>
+<tr><% row.moduleQuantity %></tr>
+<tr><% row.currentLocation %></tr>
+<%>%>
 </table>
           </div>
 
