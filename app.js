@@ -45,7 +45,7 @@ app.use('/login', login);
 // app.use('/bcomUpdate', bcomUpdate);
 // app.use('/bcomResult', bcomResult);
 // app.use('/moduleUpdate', moduleUpdate);
-// app.use('/moduleResult', moduleUpdate);
+// app.use('/moduleResult', moduleResult);
 
 
 // catch 404 and forward to error handler
