@@ -24,6 +24,7 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+app.use(session({secret : 'HelloExpressSESSION'}));
 
 // uncomment after placing your favicon in /public
 // app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -35,12 +36,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
-// app.use('/register', register);
-// app.use('/login', login);
+app.use('/register', register);
+app.use('/login', login);
 // app.use('/query', query);
 // app.use('/add', add);
 // app.use('/acomUpdate', acomUpdate);
 // app.use('/acomResult', acomResult);
+// app.use('/bcomUpdate', bcomUpdate);
+// app.use('/bcomResult', bcomResult);
+// app.use('/moduleUpdate', moduleUpdate);
+// app.use('/moduleResult', moduleUpdate);
 
 
 // catch 404 and forward to error handler
