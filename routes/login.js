@@ -26,4 +26,10 @@ router.post('/', function(req, res, next) {
         }
     });
 });
+
+router.post('/logout', function(req, res, next) {
+    req.session.member = null;
+    res.redirect('/');
+});
+
 module.exports = router;

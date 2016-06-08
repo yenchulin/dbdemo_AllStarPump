@@ -2,56 +2,39 @@ var db = require('../libs/db'); //引入我們的sql builder
 var GeneralErrors = require('../errors/GeneralErrors');
 
 var Module = function(options) {
-  this.moduleId = options.moduleId;
-  this.moduleUsage = options.moduleUsage;
-  this.moduleQuantity = options.moduleQuantity;
-  this.currentLocation = options.currentLocation;
+    this.moduleId = options.moduleId;
+    this.moduleUsage = options.moduleUsage;
+    this.moduleQuantity = options.moduleQuantity;
+    this.currentLocation = options.currentLocation;
 };
 
-Module.getById = function(moduleId){
-  db.select()
-      .from('module')
-      .where({
-          moduleId: moduleId
-      }).map(function(row) {
-          return new Module(row);
-      }).then(function(moduleList) {
-          if (moduleList.length) {
-              cb(null, moduleList[0]);
-          } else {
-              cb(new GeneralErrors.NotFound());
-          }
-      })
-      .catch(function(err) {
-          cb(err);
-      });
+Module.getById = function(moduleId, cb) {
+    db.select()
+        .from('module')
+        .where({
+            moduleId: moduleId
+        }).map(function(row) {
+            return new Module(row);
+        }).then(function(moduleList) {
+            if (moduleList.length) {
+                cb(null, moduleList[0]);
+            } else {
+                cb(new GeneralErrors.NotFound());
+            }
+        })
+        .catch(function(err) {
+            cb(err);
+        });
 };
 
-Module.prototype.save = function(cb) {
-  if(this.moduleId) {
-    db('module')
-      .update({
-        moduleUsage: this.moduleUsage,
-        moduleQuantity: this.moduleQuantity,
-        currentLocation: this.currentLocation
-      })
-      .where({
-        moduleId: this.moduleId,
-      })
-      .then(function() {
-        cb(null);
-      })
-      .catch(function(err) {
-        console.log(err);
-        cb(null, new GeneralErrors.Database());
-      });
-  } else {
+Module.prototype.insert = function(cb) {
+    console.log("insert");
     db('module')
         .insert({
-          moduleId: this.moduleId,
-          moduleUsage: this.moduleUsage,
-          moduleQuantity: this.moduleQuantity,
-          currentLocation: this.currentLocation
+            moduleId: this.moduleId,
+            moduleUsage: this.moduleUsage,
+            moduleQuantity: this.moduleQuantity,
+            currentLocation: this.currentLocation
         })
         .then(function(result) {
             var insertedId = result[0];
@@ -62,74 +45,42 @@ Module.prototype.save = function(cb) {
             console.log("MODULE INSERT", err);
             cb(new GeneralErrors.Database());
         });
-  }
+
 };
 
-var db = require('../libs/db'); //引入我們的sql builder
-var GeneralErrors = require('../errors/GeneralErrors');
-
-var Module = function(options) {
-  this.moduleId = options.moduleId;
-  this.moduleUsage = options.moduleUsage;
-  this.moduleQuantity = options.moduleQuantity;
-  this.currentLocation = options.currentLocation;
-};
-
-Module.getById = function(modulelId){
-  db.select()
-      .from('module')
-      .where({
-          modulelId: moduleId
-      }).map(function(row) {
-          return new Module(row);
-      }).then(function(moduleList) {
-          if (moduleList.length) {
-              cb(null, moduleList[0]);
-          } else {
-              cb(new GeneralErrors.NotFound());
-          }
-      })
-      .catch(function(err) {
-          cb(err);
-      });
-};
-
-Member.prototype.save = function(cb) {
-  if(this.moduleId) {
+Module.prototype.update = function(cb) {
+    console.log("update");
     db('module')
-      .update({
-        moduleUsage: this.moduleUsage,
-        moduleQuantity: this.moduleQuantity,
-        currentLocation: this.currentLocation
-      })
-      .where({
-        moduleId: this.moduleId,
-      })
-      .then(function() {
-        cb(null);
-      })
-      .catch(function(err) {
-        console.log(err);
-        cb(null, new GeneralErrors.Database());
-      });
-  } else {
-    db('module')
-        .insert({
-          modulelId: this.moduleId,
-          moduleUsage: this.moduleUsage,
-          moduleQuantity: this.moduleQuantity,
-          currentLocation: this.currentLocation
+        .update({
+            moduleUsage: this.moduleUsage,
+            moduleQuantity: this.moduleQuantity,
+            currentLocation: this.currentLocation
         })
-        .then(function(result) {
-            var insertedId = result[0];
-            this.moduleId = insertedId;
-            cb(null, this);
-        }.bind(this))
+        .where({
+            moduleId: this.moduleId,
+        })
+        .then(function() {
+            cb(null);
+        })
         .catch(function(err) {
-            console.log("MODULE INSERT", err);
-            cb(new GeneralErrors.Database());
+            console.log(err);
+            cb(null, new GeneralErrors.Database());
         });
-  }
 };
 
+Module.prototype.delete = function(cb) {
+    console.log("delete");
+    db('module')
+        .where({
+            moduleId: this.moduleId
+        })
+        .del()
+        .then(function() {
+            cb(null);
+        })
+        .catch(function(err) {
+            console.log(err);
+            cb(null, new GeneralErrors.Database());
+        });
+};
 module.exports = Module;

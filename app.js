@@ -39,7 +39,7 @@ app.use('/users', users);
 app.use('/register', register);
 app.use('/login', login);
 // app.use('/query', query);
-// app.use('/add', add);
+app.use('/add', add);
 // app.use('/acomUpdate', acomUpdate);
 // app.use('/acomResult', acomResult);
 // app.use('/bcomUpdate', bcomUpdate);
