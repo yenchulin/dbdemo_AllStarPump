@@ -33,33 +33,34 @@
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav navbar-right">
                                 <% if(member) {%>
-                                  <li><a href="/query">查詢</a></li>
-  +                                    <li><a href="/add">新增</a></li>
-  +                                    <li>
-  +                                        <form action="/login/logout" method="post">
-  +                                        <style media="screen">
-  +                              #logout {
-  +                                background: transparent;
-  +                                color: 	#808080 ;
-  +                                font-size: 10px;
-  +                                margin-top: 16px;
-  +                                border : none;
-  +                                margin-right: 4px;
-  +                                text-transform: uppercase;
-  +                                font-size: 13px;
-  +                                font-weight: 100;
-  +                                letter-spacing: 1px;
-  +                              }
-  +                              #logout:hover {
-  +                                color: 	#484848;
-  +                              }
-  +                            </style>
-  +                            <input id="logout" type="submit" value="登出" />
-  +                          </form>
-                                <% } else {%>
-                                <li><a href="/register">註冊</a></li>
-                                <li><a href="/login">登入</a></li>
-                                <% } %>
+                                    <li><a href="/query">查詢</a></li>
+                                    <li><a href="/add">新增</a></li>
+                                    <li>
+                                        <form action="/login/logout" method="post">
+                                            <style media="screen">
+                                                #logout {
+                                                    background: transparent;
+                                                    color: #808080;
+                                                    font-size: 10px;
+                                                    margin-top: 16px;
+                                                    border: none;
+                                                    margin-right: 4px;
+                                                    text-transform: uppercase;
+                                                    font-size: 13px;
+                                                    font-weight: 100;
+                                                    letter-spacing: 1px;
+                                                }
+
+                                                #logout:hover {
+                                                    color: #484848;
+                                                }
+                                            </style>
+                                            <input id="logout" type="submit" value="登出" />
+                                        </form>
+                                        <% } else {%>
+                                            <li><a href="/register">註冊</a></li>
+                                            <li><a href="/login">登入</a></li>
+                                            <% } %>
                             </ul>
                         </div>
                     </div>
