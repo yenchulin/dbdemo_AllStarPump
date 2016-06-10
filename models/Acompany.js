@@ -3,7 +3,7 @@ var GeneralErrors = require('../errors/GeneralErrors');
 
 var Acompany = function(options) {
     this.firmName = options.firmName;
-    this.componentID = options.componentID;
+    this.componentId = options.componentId;
     this.componentName = options.componentName;
     this.componentQuantity = options.componentQuantity;
     this.address = options.address;
@@ -15,6 +15,27 @@ var Acompany = function(options) {
 
 
 //Class Function
+
+
+Acompany.getAll = function(cb) {
+    db.select()
+        .from('acompany')
+
+        .map(function(row) {
+            return new Acompany(row);
+
+        }).then(function(acomList) {
+            if (acomList.length) {
+                cb(null, acomList);
+            } else {
+                cb(new GeneralErrors.NotFound());
+            }
+        })
+        .catch(function(err) {
+            cb(err);
+        });
+};
+
 Acompany.getByName = function(acomName, cb) {
     db.select()
         .from('acompany')

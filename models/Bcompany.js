@@ -17,6 +17,26 @@ var bcom = function(options) {
 };
 
 //Class Function
+
+Bcompany.getAll = function(cb) {
+    db.select()
+        .from('bcompany')
+
+        .map(function(row) {
+            return new Bcompany(row);
+
+        }).then(function(bcomList) {
+            if (bcomList.length) {
+                cb(null, bcomList);
+            } else {
+                cb(new GeneralErrors.NotFound());
+            }
+        })
+        .catch(function(err) {
+            cb(err);
+        });
+};
+
 Bcompany.getByName = function(bcomName, cb) {
     db.select()
         .from('bcompany')

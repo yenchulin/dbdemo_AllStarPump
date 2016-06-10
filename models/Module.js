@@ -8,11 +8,11 @@ var Module = function(options) {
     this.currentLocation = options.currentLocation;
 };
 
-Module.getById = function(moduleId, cb) {
+Module.getById = function(id, cb) {
     db.select()
         .from('module')
         .where({
-            moduleId: moduleId
+            moduleId: id
         }).map(function(row) {
             return new Module(row);
         }).then(function(moduleList) {
