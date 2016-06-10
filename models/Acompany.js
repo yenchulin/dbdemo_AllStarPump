@@ -3,7 +3,7 @@ var GeneralErrors = require('../errors/GeneralErrors');
 
 var Acompany = function(options) {
     this.firmName = options.firmName;
-    this.componentID = options.componentID;
+    this.componentId = options.componentId;
     this.componentName = options.componentName;
     this.componentQuantity = options.componentQuantity;
     this.address = options.address;
@@ -41,7 +41,7 @@ Acompany.prototype.insert = function(cb) {
     db('acompany')
         .insert({
             firmName: this.firmName,
-            componentID: this.componentID,
+            componentId: this.componentId,
             componentName: this.componentName,
             componentQuantity: this.componentQuantity,
             address: this.address,
@@ -67,7 +67,7 @@ Acompany.prototype.update = function(cb) {
     console.log("update");
     db('acompany')
         .update({
-            componentID: this.componentID,
+            componentId: this.componentId,
             componentName: this.componentName,
             componentQuantity: this.componentQuantity,
             address: this.address,

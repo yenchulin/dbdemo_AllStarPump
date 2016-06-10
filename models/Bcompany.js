@@ -2,9 +2,9 @@ var db = require('../libs/db'); //引入我們的sql builder
 var GeneralErrors = require('../errors/GeneralErrors');
 
 
-var bcom = function(options) {
+var Bcompany = function(options) {
     this.firmName = options.firmName;
-    this.pumpID = options.pumpID;
+    this.pumpId = options.pumpId;
     this.pumpUsage = options.pumpUsage;
     this.pumpQuantity = options.pumpQuantity;
     this.pumpCategory = options.pumpCategory;
@@ -13,7 +13,6 @@ var bcom = function(options) {
     this.personIC = options.personIC;
     this.address = options.address;
     this.phoneNo = options.phoneNo;
-    this.personIC = options.personIC;
 };
 
 //Class Function
@@ -45,7 +44,7 @@ Bcompany.prototype.update = function(cb) {
             firmName: this.firmName
         })
         .update({
-            pumpID: this.pumpID,
+            pumpId: this.pumpId,
             pumpUsage: this.pumpUsage,
             pumpQuantity: this.pumpQuantity,
             pumpCategory: this.pumpCategory,
@@ -68,7 +67,8 @@ Bcompany.prototype.insert = function(cb) {
     console.log("insert");
     db("bcompany")
         .insert({
-            pumpID: this.pumpID,
+            firmName: this.firmName,
+            pumpId: this.pumpId,
             pumpUsage: this.pumpUsage,
             pumpQuantity: this.pumpQuantity,
             pumpCategory: this.pumpCategory,

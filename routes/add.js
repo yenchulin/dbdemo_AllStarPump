@@ -3,6 +3,7 @@ var router = express.Router();
 var Member = require('../models/Member');
 var Module = require('../models/Module');
 var Acompany = require('../models/Acompany');
+var Bcompany = require('../models/Bcompany');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -10,7 +11,8 @@ router.get('/', function(req, res, next) {
         res.render('add', {
             member: req.session.member,
             statusM: null,
-            statusA: null
+            statusA: null,
+            statusB: null
         });
     } else {
         res.redirect('/');
@@ -40,7 +42,8 @@ router.post('/module', function(req, res, next) {
                             res.render('add', {
                                 member: req.session.member,
                                 statusM: '資料已新增!',
-                                statusA: null
+                                statusA: null,
+                                statusB: null
                             });
                         }
                     });
@@ -52,7 +55,8 @@ router.post('/module', function(req, res, next) {
                 res.render('add', {
                     member: req.session.member,
                     statusM: '您輸入的資料有誤!',
-                    statusA: null
+                    statusA: null,
+                    statusB: null
                 });
             }
         });
@@ -64,7 +68,7 @@ router.post('/module', function(req, res, next) {
 router.post('/acom', function(req, res, next) {
     if (req.session.member) {
         var firmName = req.body.firmName;
-        var componentID = req.body.componentID;
+        var componentId = req.body.componentId;
         var componentName = req.body.componentName;
         var componentQuantity = req.body.componentQuantity;
         var address = req.body.address;
@@ -72,15 +76,13 @@ router.post('/acom', function(req, res, next) {
         var personIC = req.body.personIC;
         var lendOT = req.body.lendOT;
         var returnT = req.body.returnT;
-        console.log(firmName);
 
         Acompany.getByName(firmName, function(err, acom) {
-            console.log("acom");
             if (err) {
                 if (err.name == "NotFoundError") {
                     var newAcompany = new Acompany({
                         firmName: firmName,
-                        componentID: componentID,
+                        componentId: componentId,
                         componentName: componentName,
                         componentQuantity: componentQuantity,
                         address: address,
@@ -91,27 +93,83 @@ router.post('/acom', function(req, res, next) {
                     });
                     newAcompany.insert(function(err) {
                         if (err) {
-                            console.log("ttt");
                             next(err);
                         } else {
-                            console.log("vvv");
                             res.render('add', {
                                 member: req.session.member,
                                 statusM: null,
-                                statusA: '資料已新增!'
+                                statusA: '資料已新增!',
+                                statusB: null
                             });
                         }
                     });
                 } else {
-                    console.log(err.name + " d");
                     next();
                 }
             } else {
-                console.log("no err");
                 res.render('add', {
                     member: req.session.member,
                     statusM: null,
-                    statusA: '您輸入的資料有誤!'
+                    statusA: '您輸入的資料有誤!',
+                    statusB: null
+                });
+            }
+        });
+    } else {
+        res.redirect('/');
+    }
+});
+
+router.post('/bcom', function(req, res, next) {
+    if (req.session.member) {
+        var pumpId = req.body.pumpId;
+        var pumpUsage = req.body.pumpUsage;
+        var pumpQuantity = req.body.pumpQuantity;
+        var pumpFlow = req.body.pumpFlow;
+        var pumpType = req.body.pumpType;
+        var pumpCategory = req.body.pumpCategory;
+        var firmName = req.body.firmName;
+        var personIC = req.body.personIC;
+        var phoneNo = req.body.phoneNo;
+        var address = req.body.address;
+        console.log(pumpId);
+
+        Bcompany.getByName(firmName, function(err, bcom) {
+            if (err) {
+                if (err.name == "NotFoundError") {
+                    var newBcompany = new Bcompany({
+                        firmName: firmName,
+                        pumpId: pumpId,
+                        pumpUsage: pumpUsage,
+                        pumpQuantity: pumpQuantity,
+                        pumpFlow: pumpFlow,
+                        pumpType: pumpType,
+                        pumpCategory: pumpCategory,
+                        phoneNo: phoneNo,
+                        personIC: personIC,
+                        address: address
+                    });
+                    newBcompany.insert(function(err) {
+                        if (err) {
+                            next(err);
+                        } else {
+                            res.render('add', {
+                                member: req.session.member,
+                                statusM: null,
+                                statusA: null,
+                                statusB: '資料已新增!'
+                            });
+                        }
+                    });
+                } else {
+                    next();
+                }
+            } else {
+                res.render('add', {
+                    member: req.session.member,
+                    statusM: null,
+                    statusA: null,
+                    statusB: '您輸入的資料有誤!'
                 });
             }
         });

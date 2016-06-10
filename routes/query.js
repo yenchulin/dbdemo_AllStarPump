@@ -14,17 +14,14 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-    var moduleID = req.body.moduleID;
+    var moduleId = req.body.moduleId;
     var moduleQuantity = req.body.moduleQuantity;
-    var currentLocation = req.body.currentLocation;
-    var moduleUsage = req.body.moduleUsage;
+    console.log(moduleId);
 
-
-    Module.getByID(moduleID, function(err, moduleList) {
+    Module.getById(moduleId, function(err, module) {
         res.render('moduleResult', {
             member: req.session.member,
-            moduleList: moduleList,
-            moduleID: moduleID
+            module: module
         });
     });
 });
