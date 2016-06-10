@@ -8,10 +8,8 @@ var session = require('express-session');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var acomResult = require('./routes/acomResult');
 var acomUpdate = require('./routes/acomUpdate');
 var add = require('./routes/add');
-var bcomResult = require('./routes/bcomResult');
 var bcomUpdate = require('./routes/bcomUpdate');
 var login = require('./routes/login');
 var moduleResult = require('./routes/moduleResult');
@@ -38,14 +36,13 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/register', register);
 app.use('/login', login);
-// app.use('/query', query);
+app.use('/query', query);
 app.use('/add', add);
 // app.use('/acomUpdate', acomUpdate);
 // app.use('/acomResult', acomResult);
 // app.use('/bcomUpdate', bcomUpdate);
 // app.use('/bcomResult', bcomResult);
-// app.use('/moduleUpdate', moduleUpdate);
-// app.use('/moduleResult', moduleResult);
+app.use('/query/moduleResult', query);
 
 
 // catch 404 and forward to error handler

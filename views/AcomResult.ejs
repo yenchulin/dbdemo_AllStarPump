@@ -1,0 +1,53 @@
+<% include ./header %>
+
+    <body>
+        <div class=container>
+            <div class=masthead>
+                <h3 class=text-muted>All Star Pump</h3>
+                <div role=navigation>
+                    <ul class="nav nav-justified">
+                        <li><a href=#>新增</a>
+                            <li><a href=#>查詢</a>
+                    </ul>
+                </div>
+            </div>
+            <div class=jumbotron>
+            </div>
+            <h2>廠商A</h2>
+            <table border=1 bordercolor=#003366 width=1100>
+                <tr>
+                    <th> 零件代碼</th>
+                    <th> 零件名稱</th>
+                    <th> 零件數量</th>
+                    <th>模具借出時間</th>
+                    <th>模具應歸還時間</th>
+                    <th>廠商名稱</th>
+                    <th>廠商負責人</th>
+                    <th>廠商電話</th>
+                    <th>廠商地址</th>
+                    <th>修改</th>
+                    <th>刪除</th>
+                </tr>
+                <% list.forEach( function(row) { %>
+                    <tr>
+                        <td>
+                            <% row.xxx %>
+                        </td>
+                        <td>入口殼磨損環</td>
+                        <td>9</td>
+                        <td>2013/06/02</td>
+                        <td>2017/09/02</td>
+                        <td>世東貿易有限公司</td>
+                        <td>張世東</td>
+                        <td>0977302029</td>
+                        <td>台灣新北市樹林區西圳街1段203巷36-1號</td>
+                        <th><a class="btn btn-primary" href=# role=button>修改</a></th>
+                        <th><a class="btn btn-danger" href=# role=button>刪除</a></th>
+                    </tr>
+                    <% })%>
+            </table>
+        </div>
+        </form>
+
+        </div>
+        </div>

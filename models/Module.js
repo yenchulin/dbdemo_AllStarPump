@@ -27,6 +27,23 @@ Module.getById = function(moduleId, cb) {
         });
 };
 
+Module.getAll = function(cb) {
+    db.select()
+        .from('module')
+        .map(function(row) {
+            return new Module(row);
+        }).then(function(moduleList) {
+            if (moduleList.length) {
+                cb(null, moduleList);
+            } else {
+                cb(new GeneralErrors.NotFound());
+            }
+        })
+        .catch(function(err) {
+            cb(err);
+        });
+};
+
 Module.prototype.insert = function(cb) {
     console.log("insert");
     db('module')
