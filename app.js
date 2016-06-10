@@ -43,7 +43,7 @@ app.use('/query', query);
 // app.use('/bcomUpdate', bcomUpdate);
 // app.use('/bcomResult', bcomResult);
 // app.use('/moduleUpdate', moduleUpdate);
- //app.use('/query/moduleResult', moduleResult);
+app.use('/query/moduleResult', query);
 
 
 // catch 404 and forward to error handler
