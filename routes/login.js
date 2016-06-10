@@ -18,7 +18,7 @@ router.post('/', function(req, res, next) {
         if (err || password !== member.password) {
             res.render('login', {
               member: null,
-              status: '您的帳號或密碼錯誤!'
+              status: err.toString() || '您的帳號或密碼錯誤!'
             });
         } else {
             req.session.member = member;

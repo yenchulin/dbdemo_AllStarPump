@@ -1,0 +1,31 @@
+<div class=row>
+  <div class=col-lg-4><h2>模具</h2>
+    <table border=1 bordercolor=#003366 width=900>
+<tr>
+  <th>模具機型</th>
+  <th>模具用途</th>
+  <th>模具數量</th>
+  <th>目前所在</th>
+  <th>修改</th>
+  <th>刪除</th>
+</tr>
+
+<tr>
+  <% moduleList.forEach(function(module) { %>
+  <th><%= module.moduleId %></th>
+
+  <th><%= module.moduleUsage %></th>
+  <th><%= module.moduleQuantity %></th>
+  <th><%= module.currentLocation %></th>
+  <%  }); %>
+  <th>修改</th>
+  <th>刪除</th>
+  <%  }); %>
+</tr>
+
+
+
+</table>
+        </div>
+
+      </div>
