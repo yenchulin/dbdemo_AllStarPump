@@ -102,52 +102,93 @@
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
-                        <input id="module" type="submit" value="送出&raquo;" />
+                        <input type="submit" value="送出&raquo;" />
             </form>
             </div>
             <div class=col-lg-4>
                 <h2>廠商B</h2>
-                <form>
-                    馬達型號：
-                    <input type="text" name="欄位名稱">
-                </form>
-                <form>
-                    馬達用途：
-                    <input type="text" name="欄位名稱">
-                </form>
-                <form>
-                    馬達數量：
-                    <input type="text" name="欄位名稱">
-                </form>
-                <form>
-                    馬達流量：
-                    <input type="text" name="欄位名稱">
-                </form>
-                <form>
-                    馬達形式：
-                    <input type="text" name="欄位名稱">
-                </form>
-                <form>
-                    馬達類型：
-                    <input type="text" name="欄位名稱">
-                </form>
-                <form>
-                    廠商名稱：
-                    <input type="text" name="欄位名稱">
-                </form>
-                <form>
-                    廠商負責人：
-                    <input type="text" name="欄位名稱">
-                </form>
-                <form>
-                    廠商電話：
-                    <input type="text" name="欄位名稱">
-                </form>
-                <form>
-                    廠商地址：
-                    <input type="text" name="欄位名稱">
-                </form>
-                <a class="btn btn-primary" href=# role=button>送出&raquo;</a>
-            </div>
-            </div>
+                <p style="color:red"><%=statusB %></p>
+                <form action="/add/bcom" method="POST" novalidate>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>馬達型號</label>
+                            <input type="text" class="form-control" name="pumpId">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>馬達用途</label>
+                            <input type="text" class="form-control" name="pumpUsage">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>馬達數量</label>
+                            <input type="text" class="form-control" name="PumpQuantity">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>馬達流量</label>
+                            <input type="text" class="form-control" name="PumpFlow">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+
+                <div class="row control-group">
+                    <div class="form-group col-xs-12 floating-label-form-group controls">
+                        <label>馬達形式</label>
+                        <input type="text" class="form-control" name="pumpType">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>馬達類型</label>
+                            <input type="text" class="form-control" name="pumpCategory">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>廠商名稱</label>
+                            <input type="text" class="form-control" name="firmName">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>廠商負責人</label>
+                            <input type="text" class="form-control" name="personIC">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>廠商電話</label>
+                            <input type="text" class="form-control" name="phoneNo">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>廠商地址</label>
+                            <input type="text" class="form-control" name="address">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <input type="submit" value="送出&raquo;" />
+        </form>
         </div>
+            </div>
