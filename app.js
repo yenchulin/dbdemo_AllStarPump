@@ -12,8 +12,7 @@ var acomUpdate = require('./routes/acomUpdate');
 var add = require('./routes/add');
 var bcomUpdate = require('./routes/bcomUpdate');
 var login = require('./routes/login');
-var moduleResult = require('./routes/moduleResult');
-var moduleResult = require('./routes/moduleUpdate');
+var moduleUpdate = require('./routes/moduleUpdate');
 var query = require('./routes/query');
 var register = require('./routes/register');
 
