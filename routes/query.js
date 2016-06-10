@@ -5,21 +5,27 @@ var Module = require('../models/Module');
 
 /* GET query page. */
 router.get('/', function(req, res, next) {
-    Module.getAll(function(err, moduleList){
-      res.render('query', {
-        member : req.session.member,
-        moduleList : moduleList
-      });
+    Module.getAll(function(err, moduleList) {
+        res.render('query', {
+            member: req.session.member,
+            moduleList: moduleList
+        });
     });
 });
 
 router.post('/', function(req, res, next) {
-    var modulesId = req.body.modulesID;
-    Module.getByID(modulesID, function(err, moduleList){
-      res.render('moduleResult', {
-        member : req.session.member,
-        moduleList : moduleList
-      });
+    var moduleID = req.body.moduleID;
+    var moduleQuantity = req.body.moduleQuantity;
+    var currentLocation = req.body.currentLocation;
+    var moduleUsage = req.body.moduleUsage;
+
+
+    Module.getByID(moduleID, function(err, moduleList) {
+        res.render('moduleResult', {
+            member: req.session.member,
+            moduleList: moduleList,
+            moduleID: moduleID
+        });
     });
 });
 
