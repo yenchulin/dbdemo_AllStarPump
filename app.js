@@ -39,9 +39,7 @@ app.use('/login', login);
 app.use('/query', query);
 app.use('/add', add);
 // app.use('/acomUpdate', acomUpdate);
-// app.use('/acomResult', acomResult);
 // app.use('/bcomUpdate', bcomUpdate);
-// app.use('/bcomResult', bcomResult);
 app.use('/query/moduleResult', query);
 
 
