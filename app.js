@@ -38,8 +38,8 @@ app.use('/login', login);
 app.use('/query', query);
 app.use('/add', add);
 app.use('/moduleUpdate', moduleUpdate);
-// app.use('/acomUpdate', acomUpdate);
-// app.use('/bcomUpdate', bcomUpdate);
+app.use('/acomUpdate', acomUpdate);
+app.use('/bcomUpdate', bcomUpdate);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

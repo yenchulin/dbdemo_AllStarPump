@@ -99,6 +99,7 @@ router.post('/module', function(req, res, next) {
 
 
 router.post('/acom', function(req, res, next) {
+  console.log("123");
     var acomName = req.body.Aname;
     Acompany.getByName(acomName, function(err, acom) {
         if (err) {

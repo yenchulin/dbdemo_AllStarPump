@@ -24,7 +24,18 @@ router.post('/module', function(req, res, next) {
         var moduleId = req.body.moduleId;
         var moduleUsage = req.body.moduleUsage;
         var moduleQuantity = req.body.moduleQuantity;
-        var currentLocation = req.body.currentLocation;
+        var acompanyName = req.body.acompanyName;
+        var quantityOwned = req.body.quantityOwned;
+
+        var firmName = req.body.firmName;
+        var componentId = req.body.componentId;
+        var componentName = req.body.componentName;
+        var componentQuantity = req.body.componentQuantity;
+        var address = req.body.address;
+        var phoneNo = req.body.phoneNo;
+        var personIC = req.body.personIC;
+        var lendOT = req.body.lendOT;
+        var returnT = req.body.returnT;
 
         Module.getById(moduleId, function(err, module) {
             if (err) {
@@ -33,7 +44,8 @@ router.post('/module', function(req, res, next) {
                         moduleId: moduleId,
                         moduleUsage: moduleUsage,
                         moduleQuantity: moduleQuantity,
-                        currentLocation: currentLocation
+                        acompanyName: acompanyName,
+                        quantityOwned: quantityOwned
                     });
                     newModule.insert(function(err) {
                         if (err) {
@@ -60,22 +72,6 @@ router.post('/module', function(req, res, next) {
                 });
             }
         });
-    } else {
-        res.redirect('/');
-    }
-});
-
-router.post('/acom', function(req, res, next) {
-    if (req.session.member) {
-        var firmName = req.body.firmName;
-        var componentId = req.body.componentId;
-        var componentName = req.body.componentName;
-        var componentQuantity = req.body.componentQuantity;
-        var address = req.body.address;
-        var phoneNo = req.body.phoneNo;
-        var personIC = req.body.personIC;
-        var lendOT = req.body.lendOT;
-        var returnT = req.body.returnT;
 
         Acompany.getByName(firmName, function(err, acom) {
             if (err) {
@@ -119,6 +115,61 @@ router.post('/acom', function(req, res, next) {
         res.redirect('/');
     }
 });
+
+// router.post('/acom', function(req, res, next) {
+//     if (req.session.member) {
+//         var firmName = req.body.firmName;
+//         var componentId = req.body.componentId;
+//         var componentName = req.body.componentName;
+//         var componentQuantity = req.body.componentQuantity;
+//         var address = req.body.address;
+//         var phoneNo = req.body.phoneNo;
+//         var personIC = req.body.personIC;
+//         var lendOT = req.body.lendOT;
+//         var returnT = req.body.returnT;
+//
+//         Acompany.getByName(firmName, function(err, acom) {
+//             if (err) {
+//                 if (err.name == "NotFoundError") {
+//                     var newAcompany = new Acompany({
+//                         firmName: firmName,
+//                         componentId: componentId,
+//                         componentName: componentName,
+//                         componentQuantity: componentQuantity,
+//                         address: address,
+//                         phoneNo: phoneNo,
+//                         personIC: personIC,
+//                         lendOT: lendOT,
+//                         returnT: returnT
+//                     });
+//                     newAcompany.insert(function(err) {
+//                         if (err) {
+//                             next(err);
+//                         } else {
+//                             res.render('add', {
+//                                 member: req.session.member,
+//                                 statusM: null,
+//                                 statusA: '資料已新增!',
+//                                 statusB: null
+//                             });
+//                         }
+//                     });
+//                 } else {
+//                     next();
+//                 }
+//             } else {
+//                 res.render('add', {
+//                     member: req.session.member,
+//                     statusM: null,
+//                     statusA: '您輸入的資料有誤!',
+//                     statusB: null
+//                 });
+//             }
+//         });
+//     } else {
+//         res.redirect('/');
+//     }
+// });
 
 router.post('/bcom', function(req, res, next) {
     if (req.session.member) {

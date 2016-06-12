@@ -1,0 +1,83 @@
+<% include ./header %>
+
+    <div class=row>
+        <div class=col-lg-4>
+            <h2>廠商B</h2>
+            <form action="/bcomUpdate" method="POST">
+                <table border=1 bordercolor=#003366 width=900>
+                    <tr>
+                        <th>廠商名稱</th>
+                        <th>廠商B地址</th>
+                        <th>馬達型號</th>
+                        <th>馬達用途</th>
+                        <th>馬達流量</th>
+                        <th>馬達形式</th>
+                        <th>馬達類型</th>
+                        <th></th>
+
+
+                    </tr>
+
+                    <th>
+                        <input type="hidden" name='firmName' value=<%=bcom.firmName %> />
+                        <%= bcom.firmName %>
+                    </th>
+                    <th>
+                        <input type="hidden" name='address' value=<%=bcom.address %> />
+                        <%= bcom.address %>
+                    </th>
+                    <th>
+                        <input type="hidden" name='pumpId' value=<%=bcom.pumpId %> />
+
+                        <%= bcom.pumpId %>
+
+                    </th>
+                    <th>
+                        <input type="hidden" name='pumpUsage' value=<%=bcom.pumpUsage %> />
+                        <%= bcom.pumpUsage %>
+                            </a>
+                    </th>
+                    <th>
+                        <a href="#" id="pumpFlow" data-type="text">
+                            <%= bcom.pumpFlow %>
+                        </a>
+                        <div style="display:none" id='hiddenForm11' class="form-inline">
+
+                            <div class="form-group">
+                                <input type="text" name="pumpFlow" value=<%=bcom.pumpFlow %> />
+                            </div>
+                            <button type="submit" class="btn btn-default">修改</button>
+
+                            <button type="button" id="cancel11" class="btn btn-default">取消</button>
+                        </div>
+                    </th>
+                    <th>
+                        <a href="#" id="pumpType" data-type="text">
+                            <%= bcom.pumpType %>
+                        </a>
+                        <div style="display:none" id='hiddenForm12' class="form-inline">
+
+                            <div class="form-group">
+                                <input type="text" name="pumpType" value=<%=bcom.pumpType %> />
+                            </div>
+                            <button type="submit" class="btn btn-default">修改</button>
+
+                            <button type="button" id="cancel12" class="btn btn-default">取消</button>
+                        </div>
+                    </th>
+                    <th>
+                        <input type="hidden" name='pumpCategory' value=<%=bcom.pumpCategory %> />
+                        <%= bcom.pumpCategory %>
+                    </th>
+                    <th>
+                        <form action="/query/BcomResult/delete" method="POST" novalidate>
+                            <input type="hidden" name='Bname' value=<%=bcom.firmName %> />
+                            <input type="submit" value="刪除">
+                        </form>
+                    </th>
+                    </tr>
+                </table>
+            </form>
+
+        </div>
+    </div>
