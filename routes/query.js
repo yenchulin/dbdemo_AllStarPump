@@ -9,49 +9,56 @@ var async = require('async');
 /* GET query page. */
 router.get('/', function(req, res, next) {
 
-    async.parallel({
-            moduleList: function(cb) {
-                Module.getAll(function(err, moduleList) {
-                    if (err) {
-                        cb(err);
-                    } else {
-                        cb(null, moduleList);
-                    }
-                });
-            },
-            acomList: function(cb) {
-                Acompany.getAll(function(err, acomList) {
-                    if (err) {
-                        cb(err);
-                    } else {
-                        cb(null, acomList);
-                    }
-                });
+    if (req.session.member) {
+        async.parallel({
+                moduleList: function(cb) {
+                    Module.getAll(function(err, moduleList) {
+                        if (err) {
+                            cb(err);
+                        } else {
+                            cb(null, moduleList);
+                        }
+                    });
+                },
+                acomList: function(cb) {
+                    Acompany.getAll(function(err, acomList) {
+                        if (err) {
+                            cb(err);
+                        } else {
+                            cb(null, acomList);
+                        }
+                    });
+
+                },
+                bcomList: function(cb) {
+                    Bcompany.getAll(function(err, bcomList) {
+
+                        if (err) {
+                            cb(err);
+                        } else {
+                            cb(null, bcomList);
+                        }
+                    });
+
+                }
 
             },
-            bcomList: function(cb) {
-                Bcompany.getAll(function(err, bcomList) {
-
-                    if (err) {
-                        cb(err);
-                    } else {
-                        cb(null, bcomList);
-                    }
-                });
-
-            }
-
-        },
-        function(err, results) {
-            if (err) {
-                console.log(err);
-                next();
-            } else {
-                res.render('query', {
-                    member: req.session.member,
-                    moduleList: results.moduleList,
-                    acomList: results.acomList,
-                    bcomList: results.bcomList
+            function(err, results) {
+                if (err) {
+                    console.log(err);
+                    next();
+                } else {
+                    res.render('query', {
+                        member: req.session.member,
+                        moduleList: results.moduleList,
+                        acomList: results.acomList,
+                        bcomList: results.bcomList
+                    });
+                }
+            });
+    } else {
+        res.render('/');
+    }
 
 });
 
@@ -64,14 +71,14 @@ router.post('/', function(req, res, next) {
     var quantityOwned = options.quantityOwned;
 
     Module.getById(moduleId, function(err, module) {
-        if(err) {
-          console.log(err);
-          next();
+        if (err) {
+            console.log(err);
+            next();
         } else {
-          res.render('moduleResult', {
-              member: req.session.member,
-              module: module
-          });
+            res.render('moduleResult', {
+                member: req.session.member,
+                module: module
+            });
         }
     });
 });
@@ -90,14 +97,15 @@ router.post('/', function(req, res, next) {
 
 
     Acompany.getByName(acomName, function(err, acomList) {
-      if(err) {
-        console.log(err);
-        next();
-      } else {res.render('AcomResult', {
-            member: req.session.member,
-            acomList: acomList
-        });
-      }
+        if (err) {
+            console.log(err);
+            next();
+        } else {
+            res.render('AcomResult', {
+                member: req.session.member,
+                acomList: acomList
+            });
+        }
     });
 });
 
@@ -117,15 +125,16 @@ router.post('/', function(req, res, next) {
 
 
     Bcompany.getByName(bcomName, function(err, bcomList) {
-      if(err) {
-        console.log(err);
-        next();
-      } else {res.render('BcomResult', {
-            member: req.session.member,
-            bcomList: bcomList
+        if (err) {
+            console.log(err);
+            next();
+        } else {
+            res.render('BcomResult', {
+                member: req.session.member,
+                bcomList: bcomList
 
-        });
-      }
+            });
+        }
     });
 });
 
