@@ -1,4 +1,5 @@
 <% include ./header %>
+
     <form action="/query/moduleResult" method="POST" novalidate>
         <div class=row>
             <div class=col-lg-4>
@@ -10,6 +11,8 @@
                                 <%= module.moduleId %>
                             </option>
                             <%  }); %>
+
+
                     </select>
                 </form>
                 <form>模具用途:
@@ -21,18 +24,29 @@
                             <%  }); %>
                     </select>
                 </form>
-                <form>目前位置:
-                    <select name="currentLocation">
+                <form>廠商a名稱:
+                    <select name="acompanyName">
                         <% moduleList.forEach(function(module) { %>
                             <option>
-                                <%= module.currentLocation %>
+                                <%= module.acompanyName %>
                             </option>
                             <%  }); %>
                     </select>
                 </form>
-                <input type="submit" value="送出">
+                <form>原有數量:
+                    <select name="quantityOwned">
+                        <% moduleList.forEach(function(module) { %>
+                            <option>
+                                <%= module.quantityOwned %>
+                            </option>
+                            <%  }); %>
+                    </select>
+                </form>
+
             </div>
+        </div>
     </form>
+
     <form action="/query/AcomResult" method="POST" novalidate>
         <div class=row>
             <div class=col-lg-4>
@@ -114,46 +128,76 @@
             </div>
         </div>
     </form>
-    <form action="/query/BcomResult" method="POST" novalidate>
-        <div class=row>
-            <div class=col-lg-4>
-                <h2>廠商B</h2>
-                <form>廠商名稱:
-                    <select name="bname">
-                        <option value="Taipei">請選擇</option>
-                    </select>
-                </form>
-                <form>目前位置:
-                    <select name="location">
-                        <option value="Taipei">請選擇</option>
-                    </select>
-                </form>
-                <form>馬達型號:
-                    <select name="returnTime">
-                        <option value="Taipei">請選擇</option>
-                    </select>
-                </form>
-                <form>馬達用途:
-                    <select name="returnTime">
-                        <option value="Taipei">請選擇</option>
-                    </select>
-                </form>
-                <form>馬達流量:
-                    <select name="returnTime">
-                        <option value="Taipei">請選擇</option>
-                    </select>
-                </form>
-                <form>馬達形式:
-                    <select name="returnTime">
-                        <option value="Taipei">請選擇</option>
-                    </select>
-                </form>
-                <form>馬達類型:
-                    <select name="returnTime">
-                        <option value="Taipei">請選擇</option>
-                    </select>
-                </form>
-                <input type="submit" value="送出">
-            </div>
+    <div class=row>
+        <div class=col-lg-4>
+
+            <form action="/query/BcomResult" method="POST" novalidate>
+                <div class=col-lg-4>
+                    <h2>廠商B</h2>
+                    <form>廠商名稱:
+                        <select name="Bname">>
+                            <% bcomList.forEach(function(bcompany) { %>
+                                <option>
+                                    <%= bcompany.firmName %>
+                                </option>
+                                <%  }); %>
+                        </select>
+                    </form>
+                    <form>目前位置:
+                        <select name="address">>
+                            <% bcomList.forEach(function(bcompany) { %>
+                                <option>
+                                    <%= bcompany.address %>
+                                </option>
+                                <%  }); %>
+                        </select>
+                    </form>
+                    <form>馬達型號:
+                        <select name="pumpId">>
+                            <% bcomList.forEach(function(bcompany) { %>
+                                <option>
+                                    <%= bcompany.pumpId %>
+                                </option>
+                                <%  }); %>
+                        </select>
+                    </form>
+                    <form>馬達用途:
+                        <select name="pumpUsage">>
+                            <% bcomList.forEach(function(bcompany) { %>
+                                <option>
+                                    <%= bcompany.pumpUsage %>
+                                </option>
+                                <%  }); %>
+                        </select>
+                    </form>
+                    <form>馬達流量:
+                        <select name="pumpFlow">>
+                            <% bcomList.forEach(function(bcompany) { %>
+                                <option>
+                                    <%= bcompany.pumpFlow %>
+                                </option>
+                                <%  }); %>
+                        </select>
+                    </form>
+                    <form>馬達形式:
+                        <select name="pumpType">>
+                            <% bcomList.forEach(function(bcompany) { %>
+                                <option>
+                                    <%= bcompany.pumpType %>
+                                </option>
+                                <%  }); %>
+                        </select>
+                    </form>
+                    <form>馬達類型:
+                        <select name="pumpCategory">>
+                            <% bcomList.forEach(function(bcompany) { %>
+                                <option>
+                                    <%= bcompany.pumpCategory %>
+                                </option>
+                                <%  }); %>
+                        </select>
+                    </form>
+                    <input type="submit" value="送出">
+                </div>
         </div>
-    </form>
+        </form>

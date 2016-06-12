@@ -13,6 +13,24 @@ var Acompany = function(options) {
     this.returnT = options.returnT;
 };
 
+Acompany.getAll = function(cb) {
+    db.select()
+        .from('acompany')
+
+        .map(function(row) {
+            return new Acompany(row);
+
+        }).then(function(acomList) {
+            if (acomList.length) {
+                cb(null, acomList);
+            } else {
+                cb(new GeneralErrors.NotFound());
+            }
+        })
+        .catch(function(err) {
+            cb(err);
+        });
+};
 
 //Class Function
 Acompany.getByName = function(acomName, cb) {

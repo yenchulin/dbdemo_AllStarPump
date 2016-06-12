@@ -5,7 +5,8 @@ var Module = function(options) {
     this.moduleId = options.moduleId;
     this.moduleUsage = options.moduleUsage;
     this.moduleQuantity = options.moduleQuantity;
-    this.currentLocation = options.currentLocation;
+    this.acompanyName = options.acompanyName;
+    this.quantityOwned = options.quantityOwned;
 };
 
 Module.getById = function(moduleId, cb) {
@@ -23,6 +24,7 @@ Module.getById = function(moduleId, cb) {
             }
         })
         .catch(function(err) {
+            console.log(err);
             cb(err);
         });
 };
