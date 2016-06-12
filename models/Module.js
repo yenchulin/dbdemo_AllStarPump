@@ -7,26 +7,29 @@ var Module = function(options) {
     this.moduleQuantity = options.moduleQuantity;
     this.acompanyName = options.acompanyName;
     this.quantityOwned = options.quantityOwned;
+
 };
 
 Module.getById = function(moduleId, cb) {
     db.select()
-        .from('module')
-        .where({
-            moduleId: moduleId
-        }).map(function(row) {
-            return new Module(row);
-        }).then(function(moduleList) {
-            if (moduleList.length) {
-                cb(null, moduleList[0]);
-            } else {
-                cb(new GeneralErrors.NotFound());
-            }
-        })
-        .catch(function(err) {
-            console.log(err);
-            cb(err);
-        });
+      .from('module')
+      .where({
+          moduleId: moduleId
+      })
+      .map(function(row) {
+          return new Module(row);
+      })
+      .then(function(moduleList) {
+          if (moduleList.length) {
+              cb(null, moduleList[0]);
+          } else {
+              cb(new GeneralErrors.NotFound());
+          }
+      })
+      .catch(function(err) {
+          console.log(err);
+          cb(err);
+      });
 };
 
 Module.getAll = function(cb) {

@@ -13,6 +13,10 @@ var Acompany = function(options) {
     this.returnT = options.returnT;
 };
 
+
+//Class Function
+
+
 Acompany.getAll = function(cb) {
     db.select()
         .from('acompany')
@@ -32,7 +36,6 @@ Acompany.getAll = function(cb) {
         });
 };
 
-//Class Function
 Acompany.getByName = function(acomName, cb) {
     db.select()
         .from('acompany')
@@ -69,7 +72,6 @@ Acompany.prototype.insert = function(cb) {
             returnT: this.returnT
         })
         .then(function(result) {
-            console.log("aaaa");
             var insertedName = result[0];
             this.firmName = insertedName;
             cb(null, this);
