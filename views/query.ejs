@@ -123,39 +123,67 @@
                 <div class=col-lg-4>
                     <h2>廠商B</h2>
                     <form>廠商名稱:
-                        <select name="bname">
-                            <option value="Taipei">請選擇</option>
-                        </select>
+                      <select name="Bname">>
+                          <% bcomList.forEach(function(bcompany) { %>
+                              <option>
+                                  <%= bcompany.firmName %>
+                              </option>
+                              <%  }); %>
+                      </select>
                     </form>
                     <form>目前位置:
-                        <select name="location">
-                            <option value="Taipei">請選擇</option>
-                        </select>
+                      <select name="address">>
+                          <% bcomList.forEach(function(bcompany) { %>
+                              <option>
+                                  <%= bcompany.address %>
+                              </option>
+                              <%  }); %>
+                      </select>
                     </form>
                     <form>馬達型號:
-                        <select name="returnTime">
-                            <option value="Taipei">請選擇</option>
-                        </select>
+                      <select name="pumpId">>
+                          <% bcomList.forEach(function(bcompany) { %>
+                              <option>
+                                  <%= bcompany.pumpId %>
+                              </option>
+                              <%  }); %>
+                      </select>
                     </form>
                     <form>馬達用途:
-                        <select name="returnTime">
-                            <option value="Taipei">請選擇</option>
-                        </select>
+                      <select name="pumpUsage">>
+                          <% bcomList.forEach(function(bcompany) { %>
+                              <option>
+                                  <%= bcompany.pumpUsage %>
+                              </option>
+                              <%  }); %>
+                      </select>
                     </form>
                     <form>馬達流量:
-                        <select name="returnTime">
-                            <option value="Taipei">請選擇</option>
-                        </select>
+                      <select name="pumpFlow">>
+                          <% bcomList.forEach(function(bcompany) { %>
+                              <option>
+                                  <%= bcompany.pumpFlow %>
+                              </option>
+                              <%  }); %>
+                      </select>
                     </form>
                     <form>馬達形式:
-                        <select name="returnTime">
-                            <option value="Taipei">請選擇</option>
-                        </select>
+                      <select name="pumpType">>
+                          <% bcomList.forEach(function(bcompany) { %>
+                              <option>
+                                  <%= bcompany.pumpType %>
+                              </option>
+                              <%  }); %>
+                      </select>
                     </form>
                     <form>馬達類型:
-                        <select name="returnTime">
-                            <option value="Taipei">請選擇</option>
-                        </select>
+                      <select name="pumpCategory">>
+                          <% bcomList.forEach(function(bcompany) { %>
+                              <option>
+                                  <%= bcompany.pumpCategory %>
+                              </option>
+                              <%  }); %>
+                      </select>
                     </form>
                     <input type="submit" value="送出">
                 </div>
