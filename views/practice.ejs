@@ -1,0 +1,14 @@
+<td>
+    <a href="#" id="moduleQuantity" data-type="text">
+        <%= module.moduleQuantity %>
+    </a>
+    <div style="display:none" id='hiddenForm' class="form-inline">
+        <form action="/moduleUpdate" method="POST">
+            <div class="form-group">
+                <input type="text" name="moduleQuantity" value=<%=module.moduleQuantity %> />
+            </div>
+            <button type="submit" class="btn btn-default">修改</button>
+        </form>
+        <button id="cancel" class="btn btn-default">取消</button>
+    </div>
+</td>
