@@ -76,7 +76,26 @@ router.post('/module', function(req, res, next) {
         }
     });
 });
-
+router.post('/module', function(req, res, next) {
+    var moduleId = req.body.moduleId;
+    Module.getById(moduleId, function(err, module) {
+        if (err) {
+            console.log(err);
+            next();
+        } else {
+            module.delete(function(err) {
+                if (err) {
+                    console.log(err);
+                    next();
+                } else {
+                    res.redirect('/', {
+                        member: req.session.member,
+                    });
+                };
+            });
+        };
+    });
+});
 
 
 router.post('/acom', function(req, res, next) {
@@ -94,6 +113,26 @@ router.post('/acom', function(req, res, next) {
     });
 });
 
+router.post('/acom', function(req, res, next) {
+  var acomName = req.body.Aname;
+    Acompany.getByName(acomName, function(err, acom) {
+        if (err) {
+            console.log(err);
+            next();
+        } else {
+            acom.delete(function(err) {
+                if (err) {
+                    console.log(err);
+                    next();
+                } else {
+                    res.redirect('/', {
+                        member: req.session.member,
+                    });
+                };
+            });
+        };
+    });
+});
 
 router.post('/bcom', function(req, res, next) {
     var bcomName = req.body.Bname;
@@ -112,5 +151,25 @@ router.post('/bcom', function(req, res, next) {
     });
 });
 
+router.post('/bcom', function(req, res, next) {
+  var bcomName = req.body.Bname;
+    Bcompany.getByName(bcomName, function(err, bcom) {
+        if (err) {
+            console.log(err);
+            next();
+        } else {
+            bcom.delete(function(err) {
+                if (err) {
+                    console.log(err);
+                    next();
+                } else {
+                    res.redirect('/', {
+                        member: req.session.member,
+                    });
+                };
+            });
+        };
+    });
+});
 
 module.exports = router;
