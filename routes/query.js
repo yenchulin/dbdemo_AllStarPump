@@ -5,10 +5,8 @@ var Acompany = require('../models/Acompany');
 var Bcompany = require('../models/Bcompany');
 
 var async = require('async');
-
 /* GET query page. */
 router.get('/', function(req, res, next) {
-
     if (req.session.member) {
         async.parallel({
                 moduleList: function(cb) {
@@ -48,27 +46,26 @@ router.get('/', function(req, res, next) {
                     console.log(err);
                     next();
                 } else {
-                    res.render('query', {
-                        member: req.session.member,
-                        moduleList: results.moduleList,
-                        acomList: results.acomList,
-                        bcomList: results.bcomList
-                    });
+                  res.render('query', {
+                      member: req.session.member,
+                      moduleList: results.moduleList,
+                      acomList: results.acomList,
+                      bcomList: results.bcomList
+                  });
                 }
             });
     } else {
-        res.redirect('/');
+      res.render('/');
     }
-
 });
 
 
-router.post('/module', function(req, res, next) {
+router.post('/', function(req, res, next) {
     var moduleId = req.body.moduleId;
     Module.getById(moduleId, function(err, module) {
         if (err) {
             console.log(err);
-            next();
+            res.end();
         } else {
             res.render('moduleResult', {
                 member: req.session.member,
@@ -79,8 +76,30 @@ router.post('/module', function(req, res, next) {
 });
 
 
+router.post('/moduleResult', function(req, res, next) {
+    var moduleId = req.body.moduleId;
+    Module.getById(moduleId, function(err, module) {
+        if (err) {
+            console.log(err);
+            next();
+        } else {
+            module.delete(function(err) {
+                if (err) {
+                    console.log(err);
+                    next();
+                } else {
+                    res.redirect('/', {
+                        member: req.session.member,
+                    });
+                };
+            });
+        };
+    });
+});
 
-router.post('/acom', function(req, res, next) {
+
+
+router.post('/', function(req, res, next) {
     var acomName = req.body.Aname;
     Acompany.getByName(acomName, function(err, acom) {
         if (err) {
@@ -96,7 +115,7 @@ router.post('/acom', function(req, res, next) {
 });
 
 
-router.post('/bcom', function(req, res, next) {
+router.post('/', function(req, res, next) {
     var bcomName = req.body.Bname;
 
     Bcompany.getByName(bcomName, function(err, bcom) {
@@ -107,11 +126,9 @@ router.post('/bcom', function(req, res, next) {
             res.render('BcomResult', {
                 member: req.session.member,
                 bcom: bcom
-
             });
         }
     });
 });
-
 
 module.exports = router;
