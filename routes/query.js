@@ -51,7 +51,7 @@ router.post('/', function(req, res, next) {
     Module.getById(moduleId, function(err, module) {
         res.render('moduleResult', {
             member: req.session.member,
-            moduleList: moduleList
+            module: module
         });
     });
 });
