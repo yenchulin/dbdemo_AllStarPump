@@ -76,7 +76,7 @@ router.post('/module', function(req, res, next) {
         }
     });
 });
-router.post('/moduleResult', function(req, res, next) {
+router.post('/moduleResult/delete', function(req, res, next) {
     var moduleId = req.body.moduleId;
     Module.getById(moduleId, function(err, module) {
         if (err) {
@@ -88,9 +88,7 @@ router.post('/moduleResult', function(req, res, next) {
                     console.log(err);
                     next();
                 } else {
-                    res.redirect('/', {
-                        member: req.session.member,
-                    });
+                    res.redirect('/query');
                 };
             });
         };
@@ -113,7 +111,7 @@ router.post('/acom', function(req, res, next) {
     });
 });
 
-router.post('/AcomResult', function(req, res, next) {
+router.post('/AcomResult/delete', function(req, res, next) {
   var acomName = req.body.Aname;
     Acompany.getByName(acomName, function(err, acom) {
         if (err) {
@@ -125,9 +123,7 @@ router.post('/AcomResult', function(req, res, next) {
                     console.log(err);
                     next();
                 } else {
-                    res.redirect('/', {
-                        member: req.session.member,
-                    });
+                    res.redirect('/query');
                 };
             });
         };
@@ -145,13 +141,12 @@ router.post('/bcom', function(req, res, next) {
             res.render('BcomResult', {
                 member: req.session.member,
                 bcom: bcom
-
             });
         }
     });
 });
 
-router.post('/BcomResult', function(req, res, next) {
+router.post('/BcomResult/delete', function(req, res, next) {
   var bcomName = req.body.Bname;
     Bcompany.getByName(bcomName, function(err, bcom) {
         if (err) {
@@ -163,9 +158,14 @@ router.post('/BcomResult', function(req, res, next) {
                     console.log(err);
                     next();
                 } else {
-                    res.redirect('/', {
-                        member: req.session.member,
-                    });
+                  bcom.delete(function(err) {
+                      if (err) {
+                          console.log(err);
+                          next();
+                      } else {
+                          res.redirect('/query');
+                      };
+                  });
                 };
             });
         };

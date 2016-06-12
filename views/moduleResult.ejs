@@ -3,6 +3,8 @@
     <div class=row>
         <div class=col-lg-4>
             <h2>模具</h2>
+            <form action="/query/moduleResult/delete" method="POST" novalidate>
+
             <table name ="module" border=1 bordercolor=#003366 width=900>
                 <tr>
                     <th>模具機型</th>
@@ -10,34 +12,38 @@
                     <th>模具數量</th>
                     <th>廠商A名稱</th>
                     <th>原有數量</th>
+                    <th></th>
                 </tr>
-                <form action="/query/moduleResult" method="POST" novalidate>
 
-                <tr>
-                    <th name= "moduleId">
-                        <%= module.moduleId %>
-                    </th>
-                    <th name= "moduleUsage">
-                        <%= module.moduleUsage %>
-                    </th>
-                    <th>
-                        <a href="#" id="moduleQuantity" data-type="text" data-pk="1"  data-title="update quantity">
-                            <%= module.moduleQuantity %>
-                        </a>
-                    </th>
-                    <th name="acompanyName">
-                        <a href="#" id="acompanyName" data-type="text" data-pk="1"  data-title="update quantity">
-                            <%= module.acompanyName %>
-                        </a>
-                    </th>
-                    <th name="quantityOwned">
-                        <a href="#" id="quantityOwned" data-type="text" data-pk="1"  data-title="update quantity">
-                            <%= module.quantityOwned %>
-                        </a>
-                    </th>
-                </tr>
-            </table>
-            <input type="submit" value="刪除">
+                  <tr>
+                      <th>
+                          <input type="hidden" name='moduleId' value=<%= module.moduleId %> />
+                          <%= module.moduleId %>
+                      </th>
+                      <th name= "moduleUsage">
+                          <%= module.moduleUsage %>
+                      </th>
+                      <th>
+                          <a href="#" id="moduleQuantity" data-type="text" data-pk="1"  data-title="update quantity">
+                              <%= module.moduleQuantity %>
+                          </a>
+                      </th>
+                      <th name="acompanyName">
+                          <a href="#" id="acompanyName" data-type="text" data-pk="1"  data-title="update quantity">
+                              <%= module.acompanyName %>
+                          </a>
+                      </th>
+                      <th name="quantityOwned">
+                          <a href="#" id="quantityOwned" data-type="text" data-pk="1"  data-title="update quantity">
+                              <%= module.quantityOwned %>
+                          </a>
+                      </th>
+                      <th>
+                        <input type="submit" value="刪除">
+                      </th>
+                  </tr>
+                </table>
+          </form>
 
         </div>
     </div>
