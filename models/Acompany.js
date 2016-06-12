@@ -15,6 +15,27 @@ var Acompany = function(options) {
 
 
 //Class Function
+
+
+Acompany.getAll = function(cb) {
+    db.select()
+        .from('acompany')
+
+        .map(function(row) {
+            return new Acompany(row);
+
+        }).then(function(acomList) {
+            if (acomList.length) {
+                cb(null, acomList);
+            } else {
+                cb(new GeneralErrors.NotFound());
+            }
+        })
+        .catch(function(err) {
+            cb(err);
+        });
+};
+
 Acompany.getByName = function(acomName, cb) {
     db.select()
         .from('acompany')
@@ -51,7 +72,6 @@ Acompany.prototype.insert = function(cb) {
             returnT: this.returnT
         })
         .then(function(result) {
-            console.log("aaaa");
             var insertedName = result[0];
             this.firmName = insertedName;
             cb(null, this);

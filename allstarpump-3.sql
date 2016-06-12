@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
+-- version 4.4.10
 -- http://www.phpmyadmin.net
 --
--- 主機: 127.0.0.1
--- 產生時間： 2016-06-07 16:10:49
--- 伺服器版本: 10.1.10-MariaDB
--- PHP 版本： 5.6.19
+-- 主機: localhost:8889
+-- 產生時間： 2016 年 06 月 12 日 11:35
+-- 伺服器版本: 5.5.42
+-- PHP 版本： 7.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -38,6 +38,16 @@ CREATE TABLE `acompany` (
   `returnT` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- 資料表的匯出資料 `acompany`
+--
+
+INSERT INTO `acompany` (`firmName`, `componentId`, `componentName`, `componentQuantity`, `address`, `phoneNo`, `personIC`, `lendOT`, `returnT`) VALUES
+('世東貿易有限公司', '373', '入口殼磨損環', 9, '台灣新北市樹林區西圳街1段203巷36-1號', 977302029, '張世東', '2012-01-21 06:23:45', '2016-03-21 13:11:32'),
+('優和國際企業有限公司', '22', '半開放式葉輪', 33, '台灣台北市中山區龍江路387巷9號1樓', 923394828, '李悠河', '2014-05-13 13:48:21', '2015-11-09 08:47:35'),
+('強頂貿易有限公司', '171', '後磨損盤', 47, '台灣新北市土城區慶祥街96巷5號', 984875263, '林強頂', '2013-02-20 08:13:27', '2016-03-14 06:39:26'),
+('義豐有限公司', '06', '軸系組立圖', 21, '台灣新北市板橋區陽明街七○巷八號', 922818394, '黃義峰', '2014-02-05 03:04:09', '2015-12-22 03:29:18');
+
 -- --------------------------------------------------------
 
 --
@@ -46,7 +56,8 @@ CREATE TABLE `acompany` (
 
 CREATE TABLE `assemble` (
   `firmA` varchar(10) NOT NULL,
-  `firmB` varchar(10) NOT NULL
+  `firmB` varchar(10) NOT NULL,
+  `required quantity` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -67,6 +78,13 @@ CREATE TABLE `bcompany` (
   `phoneNo` int(10) NOT NULL,
   `personIC` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- 資料表的匯出資料 `bcompany`
+--
+
+INSERT INTO `bcompany` (`firmName`, `pumpId`, `pumpUsage`, `pumpQuantity`, `pumpCategory`, `pumpType`, `pumpFlow`, `address`, `phoneNo`, `personIC`) VALUES
+('義豐有限公司', 'L20220', '清水', 15, '單級單吸汞', '直立式同軸', 210, '台灣新北市板橋區陽明街七○巷八號', 922818394, '黃義峰');
 
 -- --------------------------------------------------------
 
@@ -96,10 +114,18 @@ INSERT INTO `member` (`account`, `password`) VALUES
 
 CREATE TABLE `module` (
   `moduleId` varchar(20) NOT NULL,
+  `acompanyName` varchar(11) NOT NULL,
   `moduleUsage` text NOT NULL,
   `moduleQuantity` int(3) NOT NULL,
-  `currentLocation` varchar(30) NOT NULL
+  `quantityOwned` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- 資料表的匯出資料 `module`
+--
+
+INSERT INTO `module` (`moduleId`, `acompanyName`, `moduleUsage`, `moduleQuantity`, `quantityOwned`) VALUES
+('wTL2-0', '世東有限公司', '前段導輪', 7, 10);
 
 --
 -- 已匯出資料表的索引
@@ -137,7 +163,8 @@ ALTER TABLE `member`
 -- 資料表索引 `module`
 --
 ALTER TABLE `module`
-  ADD PRIMARY KEY (`moduleId`);
+  ADD PRIMARY KEY (`moduleId`),
+  ADD UNIQUE KEY `acompanyName` (`acompanyName`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
