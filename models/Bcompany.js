@@ -15,6 +15,26 @@ var Bcompany = function(options) {
     this.phoneNo = options.phoneNo;
 };
 
+Bcompany.getAll = function(cb) {
+    db.select()
+        .from('bcompany')
+
+        .map(function(row) {
+            return new Bcompany(row);
+
+        }).then(function(bcomList) {
+            if (bcomList.length) {
+                cb(null, bcomList);
+            } else {
+                cb(new GeneralErrors.NotFound());
+            }
+        })
+        .catch(function(err) {
+            cb(err);
+        });
+};
+
+
 //Class Function
 Bcompany.getByName = function(bcomName, cb) {
     db.select()
