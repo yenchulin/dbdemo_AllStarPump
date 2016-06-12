@@ -72,7 +72,6 @@ Acompany.prototype.insert = function(cb) {
             returnT: this.returnT
         })
         .then(function(result) {
-            console.log("aaaa");
             var insertedName = result[0];
             this.firmName = insertedName;
             cb(null, this);

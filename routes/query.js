@@ -2,23 +2,48 @@ var express = require('express');
 var router = express.Router();
 var Module = require('../models/Module');
 var Acompany = require('../models/Acompany');
-
+var async = require('async');
 
 /* GET query page. */
 router.get('/', function(req, res, next) {
-    Module.getAll(function(err, moduleList) {
-        res.render('query', {
-            member: req.session.member,
-            moduleList: moduleList
+
+
+    async.parallel({
+            moduleList: function(cb) {
+                Module.getAll(function(err, moduleList) {
+                    if (err) {
+                        cb(err);
+                    } else {
+                        cb(null, moduleList);
+                    }
+                });
+            },
+            acomList: function(cb) {
+                Acompany.getAll(function(err, acomList) {
+                    if (err) {
+                        cb(err);
+                    } else {
+                        cb(null, acomList);
+                    }
+                });
+            }
+            
+        },
+        function(err, results) {
+            if (err) {
+                console.log(err);
+                next();
+            } else {
+                res.render('query', {
+                    member: req.session.member,
+                    moduleList: results.moduleList,
+                    acomList: results.acomList
+                });
+            }
+            // results is now equals to: {one: 1, two: 2}
         });
-    });
-    Acompany.getAll(function(err, acomList) {
-        res.render('query', {
-            member: req.session.member,
-            acomList: acomList
-        });
-    });
-    });
+
+});
 
 
 router.post('/', function(req, res, next) {
@@ -48,7 +73,7 @@ router.post('/', function(req, res, next) {
     var returnT = req.body.returnTime;
 
 
-  Acompany.getByName(acomName, function(err, acomList) {
+    Acompany.getByName(acomName, function(err, acomList) {
         res.render('AcomResult', {
             member: req.session.member,
             acomList: acomList
