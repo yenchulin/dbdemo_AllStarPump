@@ -31,7 +31,6 @@ router.get('/', function(req, res, next) {
             },
             bcomList: function(cb) {
                 Bcompany.getAll(function(err, bcomList) {
-                  console.log('123123');
 
                     if (err) {
                         cb(err);
@@ -63,14 +62,20 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next) {
     var moduleId = req.body.moduleId;
     var moduleQuantity = req.body.moduleQuantity;
-    var currentLocation = req.body.currentLocation;
     var moduleUsage = req.body.moduleUsage;
+    var acompanyName = options.acompanyName;
+    var quantityOwned = options.quantityOwned;
 
-    Module.getById(moduleId, function(err, moduleList) {
-        res.render('moduleResult', {
-            member: req.session.member,
-            moduleList: moduleList
-        });
+    Module.getById(moduleId, function(err, module) {
+        if(err) {
+          console.log(err);
+          next();
+        } else {
+          res.render('moduleResult', {
+              member: req.session.member,
+              module: module
+          });
+        }
     });
 });
 

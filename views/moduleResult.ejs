@@ -8,32 +8,28 @@
                 <th>模具機型</th>
                 <th>模具用途</th>
                 <th>模具數量</th>
-                <th>目前所在</th>
+                <th>廠商a名稱</th>
+                <th>原有數量</th>
                 <th>修改</th>
                 <th>刪除</th>
             </tr>
 
             <tr>
-                <% moduleList.forEach(function(module) { %>
                     <th>
                         <%= module.moduleId %>
                     </th>
-                    <%  }); %>
-                        <% moduleList.forEach(function(module) { %>
                             <th>
                                 <%= module.moduleUsage %>
                             </th>
-                            <%  }); %>
-                                <% moduleList.forEach(function(module) { %>
                                     <th>
                                         <%= module.moduleQuantity %>
                                     </th>
-                                    <%  }); %>
-                                        <% moduleList.forEach(function(module) { %>
-                                            <th>
-                                                <%= module.currentLocation %>
-                                            </th>
-                                            <%  }); %>
+                                    <th>
+                                        <%= module.firmAname %>
+                                    </th>
+                                    <th>
+                                        <%= module.quantityOwned %>
+                                    </th>
                                                 <th>修改</th>
                                                 <th>刪除</th>
             </tr>

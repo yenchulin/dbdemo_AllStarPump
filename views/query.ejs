@@ -21,16 +21,25 @@
                             <%  }); %>
                     </select>
                 </form>
-                <form>目前位置:
-                    <select name="currentLocation">
+                <form>廠商a名稱:
+                    <select name="acompanyName">
                         <% moduleList.forEach(function(module) { %>
                             <option>
-                                <%= module.currentLocation %>
+                                <%= module.acompanyName %>
                             </option>
                             <%  }); %>
                     </select>
                 </form>
-                <input type="submit" value="送出">
+                <form>原有數量:
+                    <select name="quantityOwned">
+                        <% moduleList.forEach(function(module) { %>
+                            <option>
+                                <%= module.quantityOwned %>
+                            </option>
+                            <%  }); %>
+                    </select>
+                </form>
+
             </div>
         </div>
     </form>
