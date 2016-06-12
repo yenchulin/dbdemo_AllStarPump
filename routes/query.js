@@ -76,7 +76,7 @@ router.post('/module', function(req, res, next) {
         }
     });
 });
-router.post('/module', function(req, res, next) {
+router.post('/moduleResult', function(req, res, next) {
     var moduleId = req.body.moduleId;
     Module.getById(moduleId, function(err, module) {
         if (err) {
@@ -113,7 +113,7 @@ router.post('/acom', function(req, res, next) {
     });
 });
 
-router.post('/acom', function(req, res, next) {
+router.post('/AcomResult', function(req, res, next) {
   var acomName = req.body.Aname;
     Acompany.getByName(acomName, function(err, acom) {
         if (err) {
@@ -151,7 +151,7 @@ router.post('/bcom', function(req, res, next) {
     });
 });
 
-router.post('/bcom', function(req, res, next) {
+router.post('/BcomResult', function(req, res, next) {
   var bcomName = req.body.Bname;
     Bcompany.getByName(bcomName, function(err, bcom) {
         if (err) {

@@ -1,9 +1,8 @@
 <% include ./header %>
-<a href="#" id="username" data-type="text" data-pk="1" data-url="/post" data-title="Enter username">superuser</a>
-<div class=row>
-    <div class=col-lg-4>
+    <div class=row>
+        <div class=col-lg-4>
             <h2>廠商A</h2>
-            <table border=1 bordercolor=#003366 width=1100>
+            <table name="Aname" border=1 bordercolor=#003366 width=1100>
                 <tr>
                     <th>廠商名稱</th>
                     <th>負責人</th>
@@ -13,41 +12,54 @@
                     <th>零件名稱</th>
                     <th>模具借出時間</th>
                     <th>模具應歸還時間</th>
-                    <th>修改</th>
-                    <th>刪除</th>
-                  </tr>
+                </tr>
+                <form action="/query/AcomResult" method="POST" novalidate>
 
-                  <tr>
-                          <th>
-                              <%= acom.firmName %>
-                          </th>
-                                  <th>
-                                      <%= acom.componentId %>
-                                  </th>
-                                          <th>
-                                              <%= acom.componentName %>
-                                          </th>
-                                          <th>
-                                              <%= acom.componentQuantity %>
-                                          </th>
-                                          <th>
-                                              <%= acom.address %>
-                                          </th>
-                                          <th>
-                                              <%= acom.phoneNo %>
-                                          </th>
-                                          <th>
-                                              <%= acom.personIC %>
-                                          </th>
-                                          <th>
-                                              <%= acom.lendOT %>
-                                          </th>
-                                          <th>
-                                              <%= acom.returnT %>
-                                          </th>
-                                                      <th>修改</th>
-                                                      <th>刪除</th>
-                  </tr>
-              </table>
-          </div>
-      </div>
+                <tr>
+                    <th>
+                        <%= acom.firmName %>
+                    </th>
+                    <th>
+                        <%= acom.componentId %>
+                    </th>
+                    <th>
+                        <a href="#" id="componentName" data-type="text" data-pk="1" data-url="/post" data-title="update componentName">
+                            <%= acom.componentName %>
+                        </a>
+                    </th>
+                    <th>
+                      <a href="#" id="componentQuantity" data-type="text" data-pk="1" data-url="/post" data-title="update componentQuantity">
+                        <%= acom.componentQuantity %>
+                      </a>
+                    </th>
+                    <th>
+                      <a href="#" id="address" data-type="text" data-pk="1" data-url="/post" data-title="update address">
+                        <%= acom.address %>
+                      </a>
+                    </th>
+                    <th>
+                      <a href="#" id="phoneNo" data-type="text" data-pk="1" data-url="/post" data-title="update phoneNo">
+                        <%= acom.phoneNo %>
+                      </a>
+                    </th>
+                    <th>
+                      <a href="#" id="personIC" data-type="text" data-pk="1" data-url="/post" data-title="update personIC">
+                        <%= acom.personIC %>
+                      </a>
+                    </th>
+                    <th>
+                      <a href="#" id="lendOT" data-type="text" data-pk="1" data-url="/post" data-title="update lendOT">
+                        <%= acom.lendOT %>
+                      </a>
+                    </th>
+                    <th>
+                        <a href="#" id="returnT" data-type="text" data-pk="1" data-url="/post" data-title="update returnT">
+                          <%= acom.returnT %>
+                        </a>
+                    </th>
+                </tr>
+            </table>
+            <input id="delA"  type="submit" value="刪除">
+
+        </div>
+    </div>

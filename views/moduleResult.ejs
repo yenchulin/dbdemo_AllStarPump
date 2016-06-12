@@ -3,15 +3,16 @@
     <div class=row>
         <div class=col-lg-4>
             <h2>模具</h2>
-            <table border=1 bordercolor=#003366 width=900>
+            <table name ="module" border=1 bordercolor=#003366 width=900>
                 <tr>
                     <th>模具機型</th>
                     <th>模具用途</th>
                     <th>模具數量</th>
                     <th>廠商A名稱</th>
                     <th>原有數量</th>
-                    <th>刪除</th>
                 </tr>
+                <form action="/query/moduleResult" method="POST" novalidate>
+
                 <tr>
                     <th name= "moduleId">
                         <%= module.moduleId %>
@@ -34,8 +35,9 @@
                             <%= module.quantityOwned %>
                         </a>
                     </th>
-                    <th>刪除</th>
                 </tr>
             </table>
+            <input type="submit" value="刪除">
+
         </div>
     </div>

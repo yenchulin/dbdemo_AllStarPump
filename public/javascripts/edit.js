@@ -4,14 +4,25 @@ $(document).ready(function() {
     };
     $.fn.editable.defaults.mode = 'inline';
     $('#moduleQuantity').editable({
-        type :　'text',
-        url :　'/moduleUpdate',
+        type: 　 'text',
+        url: 　 '/moduleUpdate',
         success: function(response, newValue) {
-          console.log(newValue);
+            console.log(newValue);
         },
-        error : function(err){
-          console.log(err);
-        }});
+        error: function(err) {
+            console.log(err);
+        }
+    });
     $('#acompanyName').editable();
     $('#quantityOwned').editable();
+
+
 });
+<script>
+
+$(function() {
+    $("#del").click(function() {
+        $("#module tbody tr:last").remove();
+    });
+})
+</script>

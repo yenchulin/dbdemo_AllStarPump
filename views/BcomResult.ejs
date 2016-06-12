@@ -1,0 +1,58 @@
+<% include ./header %>
+
+    <div class=row>
+        <div class=col-lg-4>
+            <h2>廠商B</h2>
+            <table  name ="Bname" border=1 bordercolor=#003366 width=900>
+                <tr>
+                    <th>廠商名稱</th>
+                    <th>廠商B地址</th>
+                    <th>馬達型號</th>
+                    <th>馬達用途</th>
+                    <th>馬達流量</th>
+                    <th>馬達形式</th>
+                    <th>馬達類型</th>
+
+                </tr>
+                <form action="/query/BcomResult" method="POST" novalidate>
+
+                <tr>
+                    <th>
+                        <%= bcom.firmName %>
+                    </th>
+                    <th>
+                        <a href="#" id="address" data-type="text" data-pk="1" data-url="/post" data-title="update address">
+                            <%= bcom.address %>
+                        </a>
+                    </th>
+                    <th>
+                        <%= bcom.pumpId %>
+
+                    </th>
+                    <th>
+                        <a href="#" id="pumpUsage" data-type="text" data-pk="1" data-url="/post" data-title="update pumpUsage">
+                            <%= bcom.pumpUsage %>
+                        </a>
+                    </th>
+                    <th>
+                        <a href="#" id="pumpFlow" data-type="text" data-pk="1" data-url="/post" data-title="update pumpFlow">
+                            <%= bcom.pumpFlow %>
+                        </a>
+                    </th>
+                    <th>
+                        <a href="#" id="pumpType" data-type="text" data-pk="1" data-url="/post" data-title="update pumpType">
+                            <%= bcom.pumpType %>
+                        </a>
+                    </th>
+                    <th>
+                        <a href="#" id="pumpCategory" data-type="text" data-pk="1" data-url="/post" data-title="update pumpCategory">
+                            <%= bcom.pumpCategory %>
+                        </a>
+                    </th>
+
+                </tr>
+            </table>
+            <input id="delB" type="submit" value="刪除">
+
+        </div>
+    </div>
