@@ -31,13 +31,22 @@ $(document).ready(function() {
  });
 });
  $(document).ready(function() {
-
- $('#quantityOwned').click(function(){
+ $('#pumpFlow').click(function(){
      $(this).hide();
-     $('#hiddenForm3').show();
+     $('#hiddenForm11').show();
  });
- $('#cancel3').click(function(){
-     $('#hiddenForm3').hide();
-     $('#quantityOwned').show();
+ $('#cancel11').click(function(){
+     $('#hiddenForm11').hide();
+     $('#pumpFlow').show();
  });
+});
+$(document).ready(function() {
+$('#pumpType').click(function(){
+    $(this).hide();
+    $('#hiddenForm12').show();
+});
+$('#cancel12').click(function(){
+    $('#hiddenForm12').hide();
+    $('#pumpType').show();
+});
 });
