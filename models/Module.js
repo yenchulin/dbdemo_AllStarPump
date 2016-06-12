@@ -11,8 +11,6 @@ var Module = function(options) {
 };
 
 Module.getById = function(moduleId, cb) {
-
-    console.log("getById", moduleId);
     db.select()
       .from('module')
       .where({

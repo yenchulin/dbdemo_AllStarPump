@@ -93,10 +93,14 @@ router.post('/', function(req, res, next) {
 
 
     Acompany.getByName(acomName, function(err, acomList) {
-        res.render('AcomResult', {
+      if(err) {
+        console.log(err);
+        next();
+      } else {res.render('AcomResult', {
             member: req.session.member,
             acomList: acomList
         });
+      }
     });
 });
 
@@ -115,10 +119,14 @@ router.post('/', function(req, res, next) {
 
 
     Bcompany.getByName(bcomName, function(err, bcomList) {
-        res.render('BcomResult', {
+      if(err) {
+        console.log(err);
+        next();
+      } else {res.render('BcomResult', {
             member: req.session.member,
             bcomList: bcomList
         });
+      }
     });
 });
 

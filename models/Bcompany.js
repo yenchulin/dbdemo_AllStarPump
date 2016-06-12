@@ -25,7 +25,6 @@ Bcompany.getAll = function(cb) {
             return new Bcompany(row);
 
         }).then(function(bcomList) {
-          console.log('1231231231231');
             if (bcomList.length) {
                 cb(null, bcomList);
             } else {
