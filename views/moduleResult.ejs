@@ -3,8 +3,8 @@
     <div class=row>
         <div class=col-lg-4>
             <h2>模具</h2>
-            <form action="/query/moduleResult/delete" method="POST" novalidate>
 
+            <form action="/moduleUpdate" method="POST">
             <table name ="module" border=1 bordercolor=#003366 width=900>
                 <tr>
                     <th>模具機型</th>
@@ -20,30 +20,75 @@
                           <input type="hidden" name='moduleId' value=<%= module.moduleId %> />
                           <%= module.moduleId %>
                       </th>
-                      <th name= "moduleUsage">
-                          <%= module.moduleUsage %>
+                      <th>
+
+                          <a href="#" id="moduleUsage" data-type="text" data-pk="1"  data-title="update moduleUsage">
+                              <%= module.moduleUsage %>
+                          </a>
+                          <div style="display:none" id='hiddenForm' class="form-inline">
+
+                                <div class="form-group">
+                                    <input type="text" name="moduleUsage" value=<%=module.moduleUsage %> />
+                                </div>
+                                <button type="submit" class="btn btn-default">修改</button>
+
+                                <button type="button" id="cancel" class="btn btn-default">取消</button>
+                            </div>
                       </th>
                       <th>
                           <a href="#" id="moduleQuantity" data-type="text" data-pk="1"  data-title="update quantity">
                               <%= module.moduleQuantity %>
                           </a>
-                      </th>
-                      <th name="acompanyName">
-                          <a href="#" id="acompanyName" data-type="text" data-pk="1"  data-title="update quantity">
-                              <%= module.acompanyName %>
-                          </a>
-                      </th>
-                      <th name="quantityOwned">
-                          <a href="#" id="quantityOwned" data-type="text" data-pk="1"  data-title="update quantity">
-                              <%= module.quantityOwned %>
-                          </a>
+                          <div style="display:none" id='hiddenForm1' class="form-inline">
+
+                                <div class="form-group">
+                                    <input type="text" name="moduleQuantity" value=<%=module.moduleQuantity %> />
+                                </div>
+                                <button type="submit" class="btn btn-default">修改</button>
+
+                                <button type="button" id="cancel1" class="btn btn-default">取消</button>
+                            </div>
                       </th>
                       <th>
-                        <input type="submit" value="刪除">
+                        <a href="#" id="acompanyName" data-type="text" data-pk="1"  data-title="update acompanyName">
+                            <%= module.acompanyName %>
+                        </a>
+                        <div style="display:none" id='hiddenForm2' class="form-inline">
+
+                              <div class="form-group">
+                                  <input type="text" name="acompanyName" value=<%=module.acompanyName %> />
+                              </div>
+                              <button type="submit" class="btn btn-default">修改</button>
+
+                              <button type="button" id="cancel2" class="btn btn-default">取消</button>
+                          </div>
+                      </th>
+                      <th>
+                        <a href="#" id="quantityOwned" data-type="text" data-pk="1"  data-title="update quantityOwned">
+                            <%= module.quantityOwned %>
+                        </a>
+                        <div style="display:none" id='hiddenForm3' class="form-inline">
+
+                              <div class="form-group">
+                                  <input type="text" name="quantityOwned" value=<%=module.quantityOwned %> />
+                              </div>
+                              <button type="submit" class="btn btn-default">修改</button>
+
+                              <button type="button" id="cancel3" class="btn btn-default">取消</button>
+                          </div>
+                      </th>
+
+
+                    </form>
+                      <th>
+                        <form action="/query/moduleResult/delete" method="POST" novalidate>
+                          <input type="hidden" name='moduleId' value=<%= module.moduleId %> />
+                          <input type="submit" value="刪除">
+                        </form>
+
                       </th>
                   </tr>
                 </table>
-          </form>
 
         </div>
     </div>
