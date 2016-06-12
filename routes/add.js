@@ -22,9 +22,11 @@ router.get('/', function(req, res, next) {
 router.post('/module', function(req, res, next) {
     if (req.session.member) {
         var moduleId = req.body.moduleId;
+        var acompanyName = req.body.acompanyName;
         var moduleUsage = req.body.moduleUsage;
         var moduleQuantity = req.body.moduleQuantity;
-        var currentLocation = req.body.currentLocation;
+        var quantityOwned = req.body.quantityOwned;
+
 
         Module.getById(moduleId, function(err, module) {
             if (err) {
@@ -33,7 +35,8 @@ router.post('/module', function(req, res, next) {
                         moduleId: moduleId,
                         moduleUsage: moduleUsage,
                         moduleQuantity: moduleQuantity,
-                        currentLocation: currentLocation
+                        acompanyName: acompanyName,
+                        quantityOwned: quantityOwned
                     });
                     newModule.insert(function(err) {
                         if (err) {

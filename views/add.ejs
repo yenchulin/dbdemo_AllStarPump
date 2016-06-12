@@ -3,11 +3,18 @@
         <div class=col-lg-3>
             <h2>模具</h2>
             <p style="color:red"><%=statusM %></p>
-            <form action="/add/module" method="POST" novalidate>
+            <form action="/add/acom" method="POST" novalidate>
                 <div class="row control-group">
                     <div class="form-group col-xs-12 floating-label-form-group controls">
                         <label>模具機型</label>
                         <input type="text" class="form-control" id="moduleId" name="moduleId">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div class="row control-group">
+                    <div class="form-group col-xs-12 floating-label-form-group controls">
+                        <label>廠商A名稱</label>
+                        <input type="text" class="form-control" id="acompanyName" name="acompanyName">
                         <p class="help-block text-danger"></p>
                     </div>
                 </div>
@@ -27,18 +34,15 @@
                 </div>
                 <div class="row control-group">
                     <div class="form-group col-xs-12 floating-label-form-group controls">
-                        <label>目前位置</label>
-                        <input type="text" class="form-control" id="currentLocation" name="currentLocation">
+                        <label>模具總數</label>
+                        <input type="text" class="form-control" id="quantityOwned" name="quantityOwned">
                         <p class="help-block text-danger"></p>
                     </div>
                 </div>
-                <input type="submit" value="送出&raquo;" />
-            </form>
         </div>
         <div class=col-lg-3>
             <h2>廠商A</h2>
             <p style="color:red"><%=statusA %></p>
-            <form action="/add/acom" method="POST" novalidate>
                 <div class="row control-group">
                     <div class="form-group col-xs-12 floating-label-form-group controls">
                         <label>零件代碼</label>
