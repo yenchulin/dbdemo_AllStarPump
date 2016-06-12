@@ -1,38 +1,41 @@
 <% include ./header %>
 
-<div class=row>
-    <div class=col-lg-4>
-        <h2>模具</h2>
-        <table border=1 bordercolor=#003366 width=900>
-            <tr>
-                <th>模具機型</th>
-                <th>模具用途</th>
-                <th>模具數量</th>
-                <th>廠商a名稱</th>
-                <th>原有數量</th>
-                <th>修改</th>
-                <th>刪除</th>
-            </tr>
-
-            <tr>
-                    <th>
+    <div class=row>
+        <div class=col-lg-4>
+            <h2>模具</h2>
+            <table border=1 bordercolor=#003366 width=900>
+                <tr>
+                    <th>模具機型</th>
+                    <th>模具用途</th>
+                    <th>模具數量</th>
+                    <th>廠商A名稱</th>
+                    <th>原有數量</th>
+                    <th>刪除</th>
+                </tr>
+                <tr>
+                    <th name= "moduleId">
                         <%= module.moduleId %>
                     </th>
-                            <th>
-                                <%= module.moduleUsage %>
-                            </th>
-                                    <th>
-                                        <%= module.moduleQuantity %>
-                                    </th>
-                                    <th>
-                                        <%= module.firmAname %>
-                                    </th>
-                                    <th>
-                                        <%= module.quantityOwned %>
-                                    </th>
-                                                <th>修改</th>
-                                                <th>刪除</th>
-            </tr>
-        </table>
+                    <th name= "moduleUsage">
+                        <%= module.moduleUsage %>
+                    </th>
+                    <th>
+                        <a href="#" id="moduleQuantity" data-type="text" data-pk="1"  data-title="update quantity">
+                            <%= module.moduleQuantity %>
+                        </a>
+                    </th>
+                    <th name="acompanyName">
+                        <a href="#" id="acompanyName" data-type="text" data-pk="1"  data-title="update quantity">
+                            <%= module.acompanyName %>
+                        </a>
+                    </th>
+                    <th name="quantityOwned">
+                        <a href="#" id="quantityOwned" data-type="text" data-pk="1"  data-title="update quantity">
+                            <%= module.quantityOwned %>
+                        </a>
+                    </th>
+                    <th>刪除</th>
+                </tr>
+            </table>
+        </div>
     </div>
-</div>

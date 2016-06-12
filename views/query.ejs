@@ -1,6 +1,6 @@
 <% include ./header %>
 
-    <form action="/query/moduleResult" method="POST" novalidate>
+    <form action="/query/module" method="POST" novalidate>
         <div class=row>
             <div class=col-lg-4>
                 <h2>模具</h2>
@@ -11,45 +11,17 @@
                                 <%= module.moduleId %>
                             </option>
                             <%  }); %>
-
-
                     </select>
                 </form>
-                <form>模具用途:
-                    <select name="moduleUsage">
-                        <% moduleList.forEach(function(module) { %>
-                            <option>
-                                <%= module.moduleUsage %>
-                            </option>
-                            <%  }); %>
-                    </select>
-                </form>
-                <form>廠商a名稱:
-                    <select name="acompanyName">
-                        <% moduleList.forEach(function(module) { %>
-                            <option>
-                                <%= module.acompanyName %>
-                            </option>
-                            <%  }); %>
-                    </select>
-                </form>
-                <form>原有數量:
-                    <select name="quantityOwned">
-                        <% moduleList.forEach(function(module) { %>
-                            <option>
-                                <%= module.quantityOwned %>
-                            </option>
-                            <%  }); %>
-                    </select>
-                </form>
+                <input type="submit" value="送出">
 
             </div>
         </div>
     </form>
 
-    <form action="/query/AcomResult" method="POST" novalidate>
-        <div class=row>
-            <div class=col-lg-4>
+    <div class=row>
+        <div class=col-lg-4>
+            <form action="/query/acom" method="POST" novalidate>
                 <h2>廠商A</h2>
                 <form>廠商名稱:
                     <select name="Aname">>
@@ -60,79 +32,15 @@
                             <%  }); %>
                     </select>
                 </form>
-                <form>負責人:
-                    <select name="Aperson">>
-                        <% acomList.forEach(function(acompany) { %>
-                            <option>
-                                <%= acompany.personIC %>
-                            </option>
-                            <%  }); %>
-                    </select>
-                </form>
-                <form>電話號碼:
-                    <select name="AphoneNo">>
-                        <% acomList.forEach(function(acompany) { %>
-                            <option>
-                                <%= acompany.phoneNo %>
-                            </option>
-                            <%  }); %>
-                    </select>
-                </form>
-                <form>零件代碼:
-                    <select name="componentId">>
-                        <% acomList.forEach(function(acompany) { %>
-                            <option>
-                                <%= acompany.componentId %>
-                            </option>
-                            <%  }); %>
-                    </select>
-                </form>
-                <form>零件名稱:
-                    <select name="componentName">>
-                        <% acomList.forEach(function(acompany) { %>
-                            <option>
-                                <%= acompany.componentName %>
-                            </option>
-                            <%  }); %>
-                    </select>
-                </form>
-
-                <form>廠商A地址:
-                    <select name="Aaddress">>
-                        <% acomList.forEach(function(acompany) { %>
-                            <option>
-                                <%= acompany.address %>
-                            </option>
-                            <%  }); %>
-                    </select>
-                </form>
-                <form>借出時間:
-                    <select name="rentTime">>
-                        <% acomList.forEach(function(acompany) { %>
-                            <option>
-                                <%= acompany.lendOT %>
-                            </option>
-                            <%  }); %>
-                    </select>
-                </form>
-                <form>歸還時間:
-                    <select name="returnTime">>
-                        <% acomList.forEach(function(acompany) { %>
-                            <option>
-                                <%= acompany.returnT %>
-                            </option>
-                            <%  }); %>
-                    </select>
-                </form>
                 <input type="submit" value="送出">
-            </div>
         </div>
+    </div>
     </form>
 
     <div class=row>
         <div class=col-lg-4>
 
-            <form action="/query/BcomResult" method="POST" novalidate>
+            <form action="/query/bcom" method="POST" novalidate>
                 <div class=col-lg-4>
                     <h2>廠商B</h2>
                     <form>廠商名稱:
@@ -140,60 +48,6 @@
                             <% bcomList.forEach(function(bcompany) { %>
                                 <option>
                                     <%= bcompany.firmName %>
-                                </option>
-                                <%  }); %>
-                        </select>
-                    </form>
-                    <form>目前位置:
-                        <select name="address">>
-                            <% bcomList.forEach(function(bcompany) { %>
-                                <option>
-                                    <%= bcompany.address %>
-                                </option>
-                                <%  }); %>
-                        </select>
-                    </form>
-                    <form>馬達型號:
-                        <select name="pumpId">>
-                            <% bcomList.forEach(function(bcompany) { %>
-                                <option>
-                                    <%= bcompany.pumpId %>
-                                </option>
-                                <%  }); %>
-                        </select>
-                    </form>
-                    <form>馬達用途:
-                        <select name="pumpUsage">>
-                            <% bcomList.forEach(function(bcompany) { %>
-                                <option>
-                                    <%= bcompany.pumpUsage %>
-                                </option>
-                                <%  }); %>
-                        </select>
-                    </form>
-                    <form>馬達流量:
-                        <select name="pumpFlow">>
-                            <% bcomList.forEach(function(bcompany) { %>
-                                <option>
-                                    <%= bcompany.pumpFlow %>
-                                </option>
-                                <%  }); %>
-                        </select>
-                    </form>
-                    <form>馬達形式:
-                        <select name="pumpType">>
-                            <% bcomList.forEach(function(bcompany) { %>
-                                <option>
-                                    <%= bcompany.pumpType %>
-                                </option>
-                                <%  }); %>
-                        </select>
-                    </form>
-                    <form>馬達類型:
-                        <select name="pumpCategory">>
-                            <% bcomList.forEach(function(bcompany) { %>
-                                <option>
-                                    <%= bcompany.pumpCategory %>
                                 </option>
                                 <%  }); %>
                         </select>

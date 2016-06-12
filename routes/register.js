@@ -21,7 +21,7 @@ router.post('/', function(req, res, next) {
                     account: account,
                     password: password
                 });
-                newMember.save(function(err) {
+                newMember.insert(function(err) {
                   console.log("saved");
                     if (err) {
                         next(err);

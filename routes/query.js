@@ -32,7 +32,6 @@ router.get('/', function(req, res, next) {
                 },
                 bcomList: function(cb) {
                     Bcompany.getAll(function(err, bcomList) {
-
                         if (err) {
                             cb(err);
                         } else {
@@ -57,19 +56,14 @@ router.get('/', function(req, res, next) {
                 }
             });
     } else {
-        res.render('/');
+        res.redirect('/');
     }
 
 });
 
 
-router.post('/', function(req, res, next) {
+router.post('/module', function(req, res, next) {
     var moduleId = req.body.moduleId;
-    var moduleQuantity = req.body.moduleQuantity;
-    var moduleUsage = req.body.moduleUsage;
-    var acompanyName = options.acompanyName;
-    var quantityOwned = options.quantityOwned;
-
     Module.getById(moduleId, function(err, module) {
         if (err) {
             console.log(err);
@@ -85,75 +79,38 @@ router.post('/', function(req, res, next) {
 
 
 
-router.post('/', function(req, res, next) {
-    var AfirmName = req.body.Aname;
-    var componentId = req.body.componentId;
-    var componentName = req.body.componentName;
-    var Aaddress = req.body.Aaddress;
-    var AphoneNo = req.body.AphoneNo;
-    var ApersonIC = req.body.Aperson;
-    var lendOT = req.body.rentTime;
-    var returnT = req.body.returnTime;
-
-
-    Acompany.getByName(acomName, function(err, acomList) {
+router.post('/acom', function(req, res, next) {
+    var acomName = req.body.Aname;
+    Acompany.getByName(acomName, function(err, acom) {
         if (err) {
             console.log(err);
             next();
         } else {
             res.render('AcomResult', {
                 member: req.session.member,
-                acomList: acomList
+                acom: acom
             });
         }
     });
 });
 
 
-router.post('/', function(req, res, next) {
-    var BfirmName = req.body.Bname;
-    var pumpId = req.body.pumpId;
-    var pumpUsage = req.body.pumpUsage;
-    var pumpQuantity = req.body.pumpQuantity;
-    var pumpCategory = req.body.pumpCategory;
-    var pumpType = req.body.pumpType;
-    var pumpFlow = req.body.pumpFlow;
-    var personIC = req.body.personIC;
-    var address = req.body.address;
-    var phoneNo = req.body.phoneNo;
+router.post('/bcom', function(req, res, next) {
+    var bcomName = req.body.Bname;
 
-
-
-    Bcompany.getByName(bcomName, function(err, bcomList) {
+    Bcompany.getByName(bcomName, function(err, bcom) {
         if (err) {
             console.log(err);
             next();
         } else {
             res.render('BcomResult', {
                 member: req.session.member,
-                bcomList: bcomList
+                bcom: bcom
 
             });
         }
     });
 });
 
-router.post('/', function(req, res, next) {
-    var AfirmName = req.body.Aname;
-    var componentId = req.body.componentId;
-    var componentName = req.body.componentName;
-    var Aaddress = req.body.Aaddress;
-    var AphoneNo = req.body.AphoneNo;
-    var ApersonIC = req.body.Aperson;
-    var lendOT = req.body.rentTime;
-    var returnT = req.body.returnTime;
 
-
-    Acompany.getByName(acomName, function(err, acomList) {
-        res.render('AcomResult', {
-            member: req.session.member,
-            acomList: acomList
-        });
-    });
-});
 module.exports = router;
