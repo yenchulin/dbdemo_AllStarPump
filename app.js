@@ -10,7 +10,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var acomUpdate = require('./routes/acomUpdate');
 var add = require('./routes/add');
-var bcomUpdate = require('./routes/bcomUpdate');
+//var bcomUpdate = require('./routes/bcomUpdate');
 var login = require('./routes/login');
 var moduleUpdate = require('./routes/moduleUpdate');
 var query = require('./routes/query');
@@ -37,9 +37,9 @@ app.use('/register', register);
 app.use('/login', login);
 app.use('/query', query);
 app.use('/add', add);
-// app.use('/acomUpdate', acomUpdate);
-// app.use('/bcomUpdate', bcomUpdate);
-app.use('/query/moduleResult', query);
+//app.use('/acomUpdate', acomUpdate);
+// app.use('/query/BcomResult',query);
+// app.use('/query/moduleResult', query);
 
 
 // catch 404 and forward to error handler
