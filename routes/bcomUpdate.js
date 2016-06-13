@@ -16,14 +16,13 @@ router.post('/', function(req, res, next) {
     console.log(req.body);
 
     Bcompany.getByName(firmName, function(err, bcom) {
-      console.log(firmName);
-
         if (err) {
             console.log(err.name);
             next(err);
         } else {
             var updtBcompany = new Bcompany({
                 firmName: firmName,
+                pumpId: pumpId,
                 pumpUsage: pumpUsage,
                 pumpQuantity: pumpQuantity,
                 pumpCategory: pumpCategory,

@@ -26,7 +26,7 @@ Member.getByAccount = function(memberAct, cb) {
         });
 };
 
-Member.prototype.save = function(cb) {
+Member.prototype.insert = function(cb) {
     db("member")
         .insert({
             account: this.account,

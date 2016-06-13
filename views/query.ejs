@@ -1,54 +1,63 @@
 <% include ./header %>
-
-    <form action="/query/module" method="POST" novalidate>
-        <div class=row>
-            <div class=col-lg-4>
-                <h2>模具</h2>
-                <label>模具機型:</label>
-                <select name="moduleId">
-                    <% moduleList.forEach(function(module) { %>
-                        <option>
-                            <%= module.moduleId %>
-                        </option>
-                        <%  }); %>
-                </select>
-                <input type="submit" value="送出">
-            </div>
-        </div>
-    </form>
-
     <div class=row>
+        <div class=col-lg-4>
+            <form action="/query/module" method="POST" novalidate>
+                <h2>模具</h2>
+                <div class="row control-group">
+                    <div class="form-group col-xs-12 floating-label-form-group controls">
+                        <label>模具機型:</label>
+                        <select name="moduleId">
+                            <% moduleList.forEach(function(module) { %>
+                                <option>
+                                    <%= module.moduleId %>
+                                </option>
+                                <%  }); %>
+                        </select>
+                        <input type="submit" value="送出">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                </form>
+        </div>
+
+
         <div class=col-lg-4>
             <form action="/query/acom" method="POST" novalidate>
                 <h2>廠商A</h2>
-                <label>廠商名稱:</label>
-                <select name="Aname">>
-                    <% acomList.forEach(function(acompany) { %>
-                        <option>
-                            <%= acompany.firmName %>
-                        </option>
-                        <%  }); %>
-                </select>
-                <input type="submit" value="送出">
+                <div class="row control-group">
+                    <div class="form-group col-xs-12 floating-label-form-group controls">
+                        <label>廠商名稱:</label>
+                        <select name="firmName">
+                            <% acomList.forEach(function(acompany) { %>
+                                <option>
+                                    <%= acompany.firmName %>
+                                </option>
+                                <%  }); %>
+                        </select>
+                        <input type="submit" value="送出">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                </form>
+        </div>
+
+        <div class=col-lg-4>
+            <form action="/query/bcom" method="POST" novalidate>
+                <h2>廠商B</h2>
+                <div class="row control-group">
+                    <div class="form-group col-xs-12 floating-label-form-group controls">
+                        <label>廠商名稱:</label>
+                        <select name="firmName">
+                            <% bcomList.forEach(function(bcompany) { %>
+                                <option>
+                                    <%= bcompany.firmName %>
+                                </option>
+                                <%  }); %>
+                        </select>
+                        <input type="submit" value="送出">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                </form>
         </div>
     </div>
-    </form>
-
-    <div class=row>
-        <div class=col-lg-4>
-
-            <form action="/query/bcom" method="POST" novalidate>
-                <div class=col-lg-4>
-                    <h2>廠商B</h2>
-                    <label>廠商名稱:</label>
-                    <select name="Bname">>
-                        <% bcomList.forEach(function(bcompany) { %>
-                            <option>
-                                <%= bcompany.firmName %>
-                            </option>
-                            <%  }); %>
-                    </select>
-                    <input type="submit" value="送出">
-                </div>
-        </div>
-        </form>

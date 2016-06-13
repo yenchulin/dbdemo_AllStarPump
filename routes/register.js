@@ -13,6 +13,7 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next) {
     var account = req.body.account;
     var password = req.body.password;
+    console.log(req.body);
 
     Member.getByAccount(account, function(err, member) {
         if (err) {
@@ -22,7 +23,6 @@ router.post('/', function(req, res, next) {
                     password: password
                 });
                 newMember.insert(function(err) {
-                  console.log("saved");
                     if (err) {
                         next(err);
                     } else {
@@ -32,7 +32,8 @@ router.post('/', function(req, res, next) {
                     }
                 });
             } else {
-                next();
+                console.log(err.name);
+                next(err);
             }
         } else {
             res.render('register', {

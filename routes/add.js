@@ -24,7 +24,7 @@ router.post('/module', function(req, res, next) {
         var moduleId = req.body.moduleId;
         var moduleUsage = req.body.moduleUsage;
         var moduleQuantity = req.body.moduleQuantity;
-        var acompanyName = req.body.acompanyName;
+        // var acompanyName = req.body.acompanyName;
         var quantityOwned = req.body.quantityOwned;
 
         var firmName = req.body.firmName;
@@ -44,7 +44,7 @@ router.post('/module', function(req, res, next) {
                         moduleId: moduleId,
                         moduleUsage: moduleUsage,
                         moduleQuantity: moduleQuantity,
-                        acompanyName: acompanyName,
+                        acompanyName: firmName,
                         quantityOwned: quantityOwned
                     });
                     newModule.insert(function(err) {

@@ -3,7 +3,6 @@ var router = express.Router();
 var Module = require('../models/Module');
 var Acompany = require('../models/Acompany');
 var Bcompany = require('../models/Bcompany');
-
 var async = require('async');
 
 /* GET query page. */
@@ -76,7 +75,8 @@ router.post('/module', function(req, res, next) {
         }
     });
 });
-router.post('/module', function(req, res, next) {
+
+router.post('/moduleResult/delete', function(req, res, next) {
     var moduleId = req.body.moduleId;
     Module.getById(moduleId, function(err, module) {
         if (err) {
@@ -88,20 +88,17 @@ router.post('/module', function(req, res, next) {
                     console.log(err);
                     next();
                 } else {
-                    res.redirect('/', {
-                        member: req.session.member,
-                    });
-                };
+                    res.redirect('/query');
+                }
             });
-        };
+        }
     });
 });
 
 
 router.post('/acom', function(req, res, next) {
-  console.log("123");
-    var acomName = req.body.Aname;
-    Acompany.getByName(acomName, function(err, acom) {
+    var firmName = req.body.firmName;
+    Acompany.getByName(firmName, function(err, acom) {
         if (err) {
             console.log(err);
             next();
@@ -114,9 +111,9 @@ router.post('/acom', function(req, res, next) {
     });
 });
 
-router.post('/acom', function(req, res, next) {
-  var acomName = req.body.Aname;
-    Acompany.getByName(acomName, function(err, acom) {
+router.post('/acomResult/delete', function(req, res, next) {
+  var firmName = req.body.firmName;
+    Acompany.getByName(firmName, function(err, acom) {
         if (err) {
             console.log(err);
             next();
@@ -126,19 +123,16 @@ router.post('/acom', function(req, res, next) {
                     console.log(err);
                     next();
                 } else {
-                    res.redirect('/', {
-                        member: req.session.member,
-                    });
-                };
+                    res.redirect('/query');
+                }
             });
-        };
+        }
     });
 });
 
 router.post('/bcom', function(req, res, next) {
-    var bcomName = req.body.Bname;
-
-    Bcompany.getByName(bcomName, function(err, bcom) {
+    var firmName = req.body.firmName;
+    Bcompany.getByName(firmName, function(err, bcom) {
         if (err) {
             console.log(err);
             next();
@@ -146,15 +140,15 @@ router.post('/bcom', function(req, res, next) {
             res.render('BcomResult', {
                 member: req.session.member,
                 bcom: bcom
-
             });
         }
     });
 });
 
-router.post('/bcom', function(req, res, next) {
-  var bcomName = req.body.Bname;
-    Bcompany.getByName(bcomName, function(err, bcom) {
+router.post('/bcomResult/delete', function(req, res, next) {
+  var firmName = req.body.firmName;
+  console.log(firmName);
+    Bcompany.getByName(firmName, function(err, bcom) {
         if (err) {
             console.log(err);
             next();
@@ -167,9 +161,9 @@ router.post('/bcom', function(req, res, next) {
                     res.redirect('/', {
                         member: req.session.member,
                     });
-                };
+                }
             });
-        };
+        }
     });
 });
 
